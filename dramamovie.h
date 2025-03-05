@@ -17,41 +17,41 @@ class DramaMovie : public Movie {
 
    bool DramaMovie::operator<(const Movie &rhs) const{
 
-      if (getTitle() != rhs.getTitle()){
-         return (getTitle() < rhs.getTitle());
+      if (getDirector() != rhs.getDirector()){
+         return (getDirector() < rhs.getDirector());
       }
 
-      return (getReleaseYear() < rhs.getReleaseYear());
+      return (getTitle() < rhs.getTitle());
 
    }
     
    bool DramaMovie::operator>(const Movie &rhs) const{
 
-      if (getTitle() != rhs.getTitle()){
-         return (getTitle() > rhs.getTitle());
+      if (getDirector() != rhs.getDirector()){
+         return (getDirector() > rhs.getDirector());
       }
 
-      return (getReleaseYear() > rhs.getReleaseYear());
+      return (getTitle() > rhs.getTitle());
 
    }       
     
    bool DramaMovie::operator==(const Movie &rhs) const{
 
-      if (getTitle() != rhs.getTitle()){
+      if (getDirector() != rhs.getDirector()){
          return false;
       }
 
-      return (getReleaseYear() == rhs.getReleaseYear());
+      return (getTitle() == rhs.getTitle());
 
    }      
     
    bool DramaMovie::operator!=(const Movie &rhs) const{
 
-      if (getTitle() == rhs.getTitle()){
+      if (getDirector() == rhs.getDirector()){
          return false;
       }
 
-      return (getReleaseYear() != rhs.getReleaseYear());
+      return (getTitle() != rhs.getTitle());
 
    } 
 
