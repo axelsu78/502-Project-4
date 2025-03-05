@@ -15,44 +15,9 @@ class DramaMovie : public Movie {
       std::shared_ptr<MediaType> media = nullptr
    ) : Movie(title, director, releaseYear, stock, media) {}
 
-   bool DramaMovie::operator<(const Movie &rhs) const{
-
-      if (getDirector() != rhs.getDirector()){
-         return (getDirector() < rhs.getDirector());
-      }
-
-      return (getTitle() < rhs.getTitle());
-
-   }
-    
-   bool DramaMovie::operator>(const Movie &rhs) const{
-
-      if (getDirector() != rhs.getDirector()){
-         return (getDirector() > rhs.getDirector());
-      }
-
-      return (getTitle() > rhs.getTitle());
-
-   }       
-    
-   bool DramaMovie::operator==(const Movie &rhs) const{
-
-      if (getDirector() != rhs.getDirector()){
-         return false;
-      }
-
-      return (getTitle() == rhs.getTitle());
-
-   }      
-    
-   bool DramaMovie::operator!=(const Movie &rhs) const{
-
-      if (getDirector() == rhs.getDirector()){
-         return false;
-      }
-
-      return (getTitle() != rhs.getTitle());
-
-   } 
+   bool operator<(const Movie &rhs) const override;
+   bool operator>(const Movie &rhs) const override;
+   bool operator==(const Movie &rhs) const override;
+   bool operator!=(const Movie &rhs) const override;
 
 };
