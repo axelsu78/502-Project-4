@@ -9,6 +9,7 @@
 #include <string>
 #include <memory>
 #include "mediatype.h"
+#include "dvd.h"
 using namespace std;
 
 /* Movie Interface
@@ -19,16 +20,47 @@ using namespace std;
 */
 class Movie {
 public:
+    
+    Movie(string title = "", 
+        string director = "", 
+        int releaseYear = 0, 
+        int stock = 0,
+        std::shared_ptr<MediaType> media = nullptr
+    ) : title(title), 
+        director(director), 
+        releaseYear(releaseYear), 
+        stock(stock), 
+        media(media) {}
+
     virtual ~Movie() = default;                           // destructor
+    
     virtual bool operator<(const Movie &rhs) const;       // overloaded less than operator
+    
     virtual bool operator>(const Movie &rhs) const;       // overloaded greater than operator
+    
     virtual bool operator==(const Movie &rhs) const;      // overloaded equality operator
+    
     virtual bool operator!=(const Movie &rhs) const;      // overloaded inequality operator
-    virtual std::string getTitle() const;                 // returns title of movie
-    virtual std::string getDirector() const;              // returns director of movie
-    virtual int getStock() const;                         // returns stock of movie
-    virtual void setStock(int stock);                     // sets stock of movie
-    virtual int getReleaseYear() const;                   // returns release year of movie
+    
+    virtual std::string getTitle() const{
+        return title;
+    }                 
+    
+    virtual std::string getDirector() const{
+        return director;
+    }              
+    
+    virtual int getStock() const{
+        return stock;
+    }                         
+    
+    virtual void setStock(int newStock){
+        stock += newStock;
+    }                    
+    
+    virtual int getReleaseYear() const{
+        return releaseYear;
+    }                   
 private:
     std::string title;                                    // title of movie
     std::string director;                                 // director of movie
