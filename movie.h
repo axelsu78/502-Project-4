@@ -62,6 +62,10 @@ public:
         return releaseYear;
     }  
 
+    virtual void mergeWith(const shared_ptr<Movie>& other) {
+        setStock(getStock() + other->getStock());
+    }
+
 private:
     
     std::string title;                                    // title of movie

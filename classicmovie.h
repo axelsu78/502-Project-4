@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include "movie.h"
 #include "mediatype.h"
 #include "dvd.h"
@@ -7,52 +8,36 @@
 
 class ClassicMovie : public Movie {
 
+   private:
+
+   int releaseDate;
+   std::vector<std::string> majorActors;
+
+   public:
+  
    // Constructor
    ClassicMovie(string title = "", 
       string director = "", 
       int releaseYear = 0, 
       int stock = 0,
-      std::shared_ptr<MediaType> media = nullptr
-   ) : Movie(title, director, releaseYear, stock, media) {}
+      std::shared_ptr<MediaType> media = nullptr, 
+      int date = 0,
+      const std::vector<std::string>& actors = std::vector<std::string>()
+   ) : Movie(title, director, releaseYear, stock, media), 
+   releaseDate(date),
+   majorActors(actors) {}
 
-   bool ClassicMovie::operator<(const Movie &rhs) const{
+   int getReleaseDate() const;
 
-      if (getTitle() != rhs.getTitle()){
-         return (getTitle() < rhs.getTitle());
-      }
+   const std::vector<std::string> getMajorActors() const;
 
-      return (getReleaseYear() < rhs.getReleaseYear());
+   void addActor(const std::string& actor);
 
-   }
-    
-   bool ClassicMovie::operator>(const Movie &rhs) const{
+   void mergeWith(const std::shared_ptr<Movie>& other) override;
 
-      if (getTitle() != rhs.getTitle()){
-         return (getTitle() > rhs.getTitle());
-      }
-
-      return (getReleaseYear() > rhs.getReleaseYear());
-
-   }       
-    
-   bool ClassicMovie::operator==(const Movie &rhs) const{
-
-      if (getTitle() != rhs.getTitle()){
-         return false;
-      }
-
-      return (getReleaseYear() == rhs.getReleaseYear());
-
-   }      
-    
-   bool ClassicMovie::operator!=(const Movie &rhs) const{
-
-      if (getTitle() == rhs.getTitle()){
-         return false;
-      }
-
-      return (getReleaseYear() != rhs.getReleaseYear());
-
-   } 
+   bool operator<(const Movie &rhs) const override;
+   bool operator>(const Movie &rhs) const override;
+   bool operator==(const Movie &rhs) const override;
+   bool operator!=(const Movie &rhs) const override;
 
 };
