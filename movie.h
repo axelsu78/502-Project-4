@@ -32,15 +32,15 @@ public:
         stock(stock), 
         media(media) {}
 
-    virtual ~Movie() = default;                           // destructor
+    virtual ~Movie() = default;                           
     
-    virtual bool operator<(const Movie &rhs) const;       // overloaded less than operator
+    virtual bool operator<(const Movie &rhs) const;       
     
-    virtual bool operator>(const Movie &rhs) const;       // overloaded greater than operator
+    virtual bool operator>(const Movie &rhs) const;       
     
-    virtual bool operator==(const Movie &rhs) const;      // overloaded equality operator
+    virtual bool operator==(const Movie &rhs) const;      
     
-    virtual bool operator!=(const Movie &rhs) const;      // overloaded inequality operator
+    virtual bool operator!=(const Movie &rhs) const;      
     
     virtual std::string getTitle() const{
         return title;
@@ -60,13 +60,20 @@ public:
     
     virtual int getReleaseYear() const{
         return releaseYear;
-    }                   
+    }  
+
 private:
+    
     std::string title;                                    // title of movie
+   
     std::string director;                                 // director of movie
+    
     std::shared_ptr<MediaType> media;                     // media type of movie
+    
     int stock;                                            // stock of movie
+    
     int releaseYear;                                      // movie release year  
+
 };
 
 #endif
