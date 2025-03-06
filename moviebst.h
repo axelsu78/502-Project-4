@@ -25,7 +25,7 @@ struct Node{
    {}
 };
 
-Node* root = nullptr;
+Node* root;
 
 // insert
 bool insertHelper(Node* root, std::shared_ptr<Movie> movie);
@@ -48,7 +48,7 @@ MovieBST();
 ~MovieBST();
 
 // insert
-bool insert(std::shared_ptr<Movie> movie)
+bool insert(std::shared_ptr<Movie> movie);
 
 // retrieve
 std::shared_ptr<Movie> retrieve(std::shared_ptr<Movie> tempSearchKey);
@@ -57,3 +57,5 @@ std::shared_ptr<Movie> retrieve(std::shared_ptr<Movie> tempSearchKey);
 void display();
 
 };
+
+#include "moviebst.hpp"
