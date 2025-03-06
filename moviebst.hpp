@@ -13,7 +13,8 @@ MovieBST<Movie>::MovieBST() : root(nullptr){}
 
 template <typename Movie>
 MovieBST<Movie>::~MovieBST(){
-
+   clear(root);
+   root = nullptr;
 }
 
 
@@ -81,11 +82,40 @@ std::shared_ptr<Movie> MovieBST<Movie>::retrieveHelper(Node* root, std::shared_p
 
 template <typename Movie>
 void MovieBST<Movie>::displayHelper(Node* root){
+   
+   if (root == nullptr){
+      return;
+   }
+   
+   if (root->leftChild){
+      displayHelper(root->leftChild);
+   }
 
+   root->movie->printMovie();
+
+   if (root->rightChild){
+      displayHelper(root->rightChild);
+   }
 }
 
 template <typename Movie>
 void MovieBST<Movie>::clear(Node* root){
+
+   if (root == nullptr){
+      return;
+   }
+
+   if (root->leftChild){
+      clear(root->leftChild);
+      root->leftChild = nullptr;
+   }
+
+   if (root->rightChild){
+      clear(root->rightChild);
+      root->rightChild = nullptr;
+   }
+
+   delete root;
 
 }
 
@@ -110,5 +140,7 @@ std::shared_ptr<Movie> MovieBST<Movie>::retrieve(std::shared_ptr<Movie> tempSear
 
 template <typename Movie>
 void MovieBST<Movie>::display(){
-   
+   if (root != nullptr){
+      displayHelper(root);
+   }
 }
