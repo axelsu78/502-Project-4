@@ -68,6 +68,11 @@ public:
 
     virtual bool mergeWith(const shared_ptr<Movie>& other);
 
+    virtual void printMovie(){
+        std::cout << title << ", " << stock << std::endl;
+    }
+
+
 private:
     
     std::string title;                                    // title of movie
