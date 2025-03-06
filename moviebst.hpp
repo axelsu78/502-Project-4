@@ -55,11 +55,27 @@ bool MovieBST<Movie>::insertHelper(Node* root, std::shared_ptr<Movie> movie){
 
 template <typename Movie>
 std::shared_ptr<Movie> MovieBST<Movie>::retrieveHelper(Node* root, std::shared_ptr<Movie> tempSearchKey){
+   
    if (root == nullptr){
-      return false;
+      return nullptr;
    }
 
-   if(*movie == )
+   if (*tempSearchKey == *(root->movie)){
+      return root->movie;
+   }
+
+   if (*tempSearchKey < *(root->movie)){
+      if (root->leftChild){
+         return retrieveHelper(root->leftChild, movie);
+      }
+   } else {
+      if (root->rightChild){
+         return retrieveHelper(root->rightChild, movie);
+      }
+      
+   }
+
+   return nullptr;
 
 }
 
