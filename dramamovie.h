@@ -24,4 +24,6 @@ class DramaMovie : public Movie {
    bool operator==(const Movie &rhs) const override;
    bool operator!=(const Movie &rhs) const override;
 
+   bool mergeWith(const shared_ptr<Movie>& other) override;
+
 };

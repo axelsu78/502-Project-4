@@ -29,6 +29,8 @@ bool MovieBST<Movie>::insertHelper(Node* root, std::shared_ptr<Movie> movie){
       if (root->leftChild == nullptr){
          root->leftChild = new Node(movie);
          return true;
+      } else {
+         insertHelper(root->leftChild, movie);
       }
    }
 
@@ -37,19 +39,27 @@ bool MovieBST<Movie>::insertHelper(Node* root, std::shared_ptr<Movie> movie){
       if (root->rightChild == nullptr){
          root->rightChild = new Node(movie);
          return true;
+      } else {
+         insertHelper(root->rightChild, movie);
       }
    }
 
    // check if equal and handle case
    if (*movie == *(root->movie)){
-      root->movie->mergeWith(movie);
-      return true;
+      return (root->movie->mergeWith(movie));
    }
+
+   return false;
 
 }
 
 template <typename Movie>
 std::shared_ptr<Movie> MovieBST<Movie>::retrieveHelper(Node* root, std::shared_ptr<Movie> tempSearchKey){
+   if (root == nullptr){
+      return false;
+   }
+
+   if(*movie == )
 
 }
 
@@ -76,7 +86,10 @@ bool MovieBST<Movie>::insert(std::shared_ptr<Movie> movie){
 
 template <typename Movie>
 std::shared_ptr<Movie> MovieBST<Movie>::retrieve(std::shared_ptr<Movie> tempSearchKey){
-
+   if (root != nullptr){
+      return retrieveHelper(root, movie);
+   }
+   return false;
 }
 
 template <typename Movie>

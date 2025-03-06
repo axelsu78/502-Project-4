@@ -127,8 +127,26 @@ void ClassicMovie::addActor(const std::string& actor){
 
 }
 
-void ClassicMovie::mergeWith(const shared_ptr<Movie>& other){
+bool ClassicMovie::mergeWith(const shared_ptr<Movie>& other){
 
-   Movie::mergeWith(other);
+   std::shared_ptr<ClassicMovie> otherClassic = std::dynamic_pointer_cast<ClassicMovie>(other);
+
+   if (!otherClassic) {
+      return false;
+   }
+
+   if (getTitle() != otherClassic->getTitle() ||
+      getReleaseYear() != otherClassic->getReleaseYear() ||
+      getMedia() != otherClassic->getMedia() || 
+      getDirector() != otherClassic->getDirector() ||
+      getReleaseDate() != otherClassic->getReleaseDate()){
+         return false;
+   }
+
+   for (const auto& actor : otherClassic->getMajorActors()){
+      addActor(actor);
+   }
+   setStock(getStock() + otherClassic->getStock());
+   return true;
 
 }

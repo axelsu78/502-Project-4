@@ -60,11 +60,13 @@ public:
     
     virtual int getReleaseYear() const{
         return releaseYear;
-    }  
-
-    virtual void mergeWith(const shared_ptr<Movie>& other) {
-        setStock(getStock() + other->getStock());
     }
+    
+    virtual std::shared_ptr<MediaType> getMedia() const {
+        return media;
+    }
+
+    virtual bool mergeWith(const shared_ptr<Movie>& other);
 
 private:
     

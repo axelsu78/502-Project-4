@@ -37,7 +37,7 @@ class ClassicMovie : public Movie {
 
    void addActor(const std::string& actor);
 
-   void mergeWith(const std::shared_ptr<Movie>& other) override;
+   bool mergeWith(const std::shared_ptr<Movie>& other) override;
 
    bool operator<(const Movie &rhs) const override;
    bool operator>(const Movie &rhs) const override;

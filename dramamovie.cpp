@@ -43,3 +43,23 @@ bool DramaMovie::operator!=(const Movie &rhs) const{
    return (getTitle() != rhs.getTitle());
 
 } 
+
+bool DramaMovie::mergeWith(const shared_ptr<Movie>& other){
+   
+   std::shared_ptr<DramaMovie> otherDrama = std::dynamic_pointer_cast<DramaMovie>(other);
+
+   if (!otherDrama) {
+      return false;
+   }
+
+   if (getTitle() != otherDrama->getTitle() ||
+      getReleaseYear() != otherDrama->getReleaseYear() ||
+      getMedia() != otherDrama->getMedia() || 
+      getDirector() != otherDrama->getDirector()){
+         return false;
+   }
+
+   setStock(getStock() + otherDrama->getStock());
+   return true;
+
+}
