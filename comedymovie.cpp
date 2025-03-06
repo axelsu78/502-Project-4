@@ -1,4 +1,7 @@
-
+/* Axel Sundstrom, Cameron Chen
+   CSS 502 Assignment 4
+   Comedy Movie Class
+*/
 #include "comedymovie.h"
 
 bool ComedyMovie::operator<(const Movie &rhs) const{

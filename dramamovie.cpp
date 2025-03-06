@@ -1,3 +1,7 @@
+/* Axel Sundstrom, Cameron Chen
+   CSS 502 Assignment 4
+   Drama Movie Class
+*/
 #include "dramamovie.h"
 
 bool DramaMovie::operator<(const Movie &rhs) const{

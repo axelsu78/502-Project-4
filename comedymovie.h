@@ -1,3 +1,7 @@
+/* Axel Sundstrom, Cameron Chen
+   CSS 502 Assignment 4
+   Comedy Movie Header
+*/
 #pragma once
 
 #include "movie.h"

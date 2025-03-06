@@ -1,3 +1,7 @@
+/* Axel Sundstrom, Cameron Chen
+   CSS 502 Assignment 4
+   Classic Movie Class
+*/
 #include "classicmovie.h"
 #include <algorithm>
 

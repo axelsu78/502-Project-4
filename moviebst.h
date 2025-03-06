@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen, Kalina Gavrilova, Vidushi Singla
+/* Axel Sundstrom, Cameron Chen
    CSS 502 Assignment 4
    Movie Binary Search Tree
 */
@@ -18,8 +18,12 @@ struct Node{
    Node* leftChild;
    Node* rightChild;
 
-   Node() : movie(m), leftChild(nullptr), rightChild(nullptr) {}
-}
+   Node(std::shared_ptr<Movie> movie) : 
+   movie(movie), 
+   leftChild(nullptr), 
+   rightChild(nullptr) 
+   {}
+};
 
 Node* root = nullptr;
 
