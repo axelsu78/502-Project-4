@@ -34,43 +34,29 @@ public:
 
     virtual ~Movie() = default;                           
     
-    virtual bool operator<(const Movie &rhs) const;       
+    virtual bool operator<(const Movie &rhs) const = 0;       
     
-    virtual bool operator>(const Movie &rhs) const;       
+    virtual bool operator>(const Movie &rhs) const = 0;       
     
-    virtual bool operator==(const Movie &rhs) const;      
+    virtual bool operator==(const Movie &rhs) const = 0;      
     
-    virtual bool operator!=(const Movie &rhs) const;      
+    virtual bool operator!=(const Movie &rhs) const = 0;      
     
-    virtual std::string getTitle() const{
-        return title;
-    }                 
+    virtual std::string getTitle() const;
     
-    virtual std::string getDirector() const{
-        return director;
-    }              
+    virtual std::string getDirector() const;
     
-    virtual int getStock() const{
-        return stock;
-    }                         
+    virtual int getStock() const;              
     
-    virtual void setStock(int newStock){
-        stock += newStock;
-    }                    
+    virtual void setStock(int newStock);       
     
-    virtual int getReleaseYear() const{
-        return releaseYear;
-    }
+    virtual int getReleaseYear() const;
     
-    virtual std::shared_ptr<MediaType> getMedia() const {
-        return media;
-    }
+    virtual string getMedia() const;
 
-    virtual bool mergeWith(const shared_ptr<Movie>& other);
+    virtual bool mergeWith(const shared_ptr<Movie>& other) = 0;
 
-    virtual void printMovie(){
-        std::cout << title << ", " << stock << std::endl;
-    }
+    virtual void printMovie();
 
 
 private:
@@ -79,11 +65,11 @@ private:
    
     std::string director;                                 // director of movie
     
-    std::shared_ptr<MediaType> media;                     // media type of movie
+    int releaseYear;                                      // movie release year 
     
     int stock;                                            // stock of movie
-    
-    int releaseYear;                                      // movie release year  
+
+    std::shared_ptr<MediaType> media;                     // media type of movie     
 
 };
 

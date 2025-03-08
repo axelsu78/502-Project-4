@@ -15,7 +15,7 @@ public:
 
    virtual ~MediaType() = default; // virtual destructor
 
-protected:
+public:
 
    virtual string getMediaType() const = 0;
 
