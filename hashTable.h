@@ -8,6 +8,8 @@
 
 */
 
+#pragma once
+
 #include <cstddef>
 
 template <typename K, typename V>
@@ -15,29 +17,29 @@ class HashTable {
 
 private:
 
-   struct Node {
+   struct Entry {
       K key;
       V value;
       bool occupied;
 
-      Node (constK& k, const V& v) : key(k), value(v), occupied(false) {}
+      Entry() : occupied(false) {}
+
+      Entry (const K& k, const V& v) : key(k), value(v), occupied(false) {}
    };
 
    Entry* table;
    size_t capacity;
    size_t count;
 
-   virtual size_t hash(const key& key) const;
+   virtual size_t hash(const K& key) const;
 
-   size_t findIndex(const key& key) const;
+   size_t findIndex(const K& key) const;
 
    void resize(size_t newCapacity);
 
 public:
 
-   HashTable(size_t initialCapacity = 101) : capacity(initialCapacity), count(0) {
-      table = new Entry[capacity];
-   }
+   HashTable(size_t initialCapacity = 101);
    
    virtual ~HashTable();
 

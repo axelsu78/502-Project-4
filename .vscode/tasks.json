@@ -10,13 +10,9 @@
             "-Wall",
             "-Wextra",
             "-g",
-            "movie.cpp",
-            "classicmovie.cpp",
-            "comedymovie.cpp",
-            "dramamovie.cpp",
-            "movie_test.cpp",
+            "hashTableTest.cpp",
             "-o",
-            "movie_test"
+            "hashTableTest"
          ],
          "options": {
             "cwd": "${workspaceFolder}"
@@ -30,9 +26,9 @@
          }
       },
       {
-         "type": "process",
+         "type": "process", 
          "label": "Run Movie Test",
-         "command": "${workspaceFolder}/movie_test",
+         "command": "${workspaceFolder}/hashTableTest",
          "options": {
             "cwd": "${workspaceFolder}"
          },

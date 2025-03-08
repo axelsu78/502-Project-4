@@ -5,7 +5,7 @@
            "name": "Debug Movie Test",
            "type": "cppdbg",
            "request": "launch",
-           "program": "${workspaceFolder}/movie_test",
+           "program": "${workspaceFolder}/hashTableTest",
            "args": [],
            "stopAtEntry": false,
            "cwd": "${workspaceFolder}",
