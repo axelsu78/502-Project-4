@@ -1,7 +1,13 @@
 /* Axel Sundstrom, Cameron Chen
    CSS 502 Assignment 4
    HashTable Class
+
+   Note - as this assignment only needs chars or ints as hash values, the hash
+   function should work - however, may need to be implemented differently
+   if different data types are used in a Hash Table subclass
+
 */
+
 template <typename K, typename V>
 class HashTable {
 
