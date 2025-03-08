@@ -11,7 +11,11 @@ using string = std::string;
 
 class MediaType {
 
+public:
+
    virtual ~MediaType() = default; // virtual destructor
+
+protected:
 
    virtual string getMediaType() const = 0;
 

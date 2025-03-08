@@ -67,11 +67,11 @@ std::shared_ptr<Movie> MovieBST<Movie>::retrieveHelper(Node* root, std::shared_p
 
    if (*tempSearchKey < *(root->movie)){
       if (root->leftChild){
-         return retrieveHelper(root->leftChild, movie);
+         return retrieveHelper(root->leftChild, tempSearchKey);
       }
    } else {
       if (root->rightChild){
-         return retrieveHelper(root->rightChild, movie);
+         return retrieveHelper(root->rightChild, tempSearchKey);
       }
       
    }
@@ -133,9 +133,9 @@ bool MovieBST<Movie>::insert(std::shared_ptr<Movie> movie){
 template <typename Movie>
 std::shared_ptr<Movie> MovieBST<Movie>::retrieve(std::shared_ptr<Movie> tempSearchKey){
    if (root != nullptr){
-      return retrieveHelper(root, movie);
+      return retrieveHelper(root, tempSearchKey);
    }
-   return false;
+   return nullptr;
 }
 
 template <typename Movie>

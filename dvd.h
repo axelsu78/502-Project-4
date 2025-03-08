@@ -10,6 +10,8 @@ class DVD : public MediaType {
 
 public:
 
+   virtual ~DVD() = default;
+
    string getMediaType() const override{
       return "DVD";
    }

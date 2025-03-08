@@ -11,6 +11,8 @@
 
 class DramaMovie : public Movie {
 
+public:
+
    // Constructor
    DramaMovie(string title = "", 
       string director = "", 
