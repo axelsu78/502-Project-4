@@ -21,13 +21,11 @@ const int MOVIE_GENRES = 3;  // number of movie genres
 class Store {
 
 public:
-                   
-    MovieBST<Movie>* movieInventory[MOVIE_GENRES - 1];   // array of binary search trees for movie genres
 
-    Store();                                    // constructor
-    ~Store();                                   // destructor
-    int getMovieCount(Movie *movie);            // returns count of movie in inventory
-    void inventory();                           // displays inventory of movies
+   Store();                                    // constructor
+   ~Store();                                   // destructor
+   int getMovieCount(Movie *movie);            // returns count of movie in inventory
+   void inventory();                           // displays inventory of movies
 
 private:
 
