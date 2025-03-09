@@ -26,11 +26,13 @@ public:
 
    std::vector<std::unique_ptr<Action>> getHistory() const;
 
+   bool addHistory(std::shared_ptr<Action> action);
+
 private:
 
    int customerID;
 
-   std::vector<Action> history;
+   std::vector<std::shared_ptr<Action>> history;
 
 
 };

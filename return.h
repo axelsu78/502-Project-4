@@ -4,7 +4,7 @@
 #include "movie.h"
 #include "action.h"
 
-class Borrow : public Action {
+class Return : public Action {
 
 public:
 
