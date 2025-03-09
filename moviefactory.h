@@ -2,6 +2,8 @@
 
 #include "movie.h"
 #include "movieparams.h"
+#include "mediatype.h"
+#include "dvd.h"
 
 using string = std::string;
 
@@ -16,5 +18,9 @@ class MovieFactory {
    virtual std::shared_ptr<Movie> createSearchKey(const MovieParams& params) = 0;
 
    protected:
+
+   std::shared_ptr<MediaType> createDVD() {   
+      return std::make_shared<DVD>();
+   }
 
 };
