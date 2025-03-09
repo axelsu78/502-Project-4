@@ -55,4 +55,4 @@ public:
 
 };
 
-#include "hashTable.hpp"
+#include "hashtable.hpp"

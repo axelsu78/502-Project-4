@@ -6,6 +6,11 @@
 #ifndef INVENTORYSTORAGE_H
 #define INVENTORYSTORAGE_H
 #include "movie.h"
+#include "moviebst.h"
+#include "hashtable.h"
+#include "action.h"
+#include "actionfactory.h"
+#include "moviefactory.h"
 #include <iostream>
 
 using namespace std;
@@ -19,8 +24,10 @@ public:
     void getInventory() const; // displays inventory of movies
 
 private:
-    const int MOVIE_GENRES = 3; // number of movie genres
-    MovieBST movieInventory[MOVIE_GENRES]; // array of binary search trees for movie genres
+    HashTable<char, std::unique_ptr<MovieBST<Movie>>> movieSearchTable;
+    HashTable<int, std::shared_ptr<Customer>> customerSearchTable;
+    HashTable<char, std::unique_ptr<ActionFactory>> actionFactoryTable;
+    HashTable<char, std::shared_ptr<MovieFactory>> movieFactoryTable;
 };
 
 #endif

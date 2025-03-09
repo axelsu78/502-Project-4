@@ -30,8 +30,5 @@ public:
     void inventory();                           // displays inventory of movies
 
 private:
-    
-HashTable<int ID, Customer*> customers;    // hash table of customers
-};
 
 #endif

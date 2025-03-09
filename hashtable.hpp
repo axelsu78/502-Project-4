@@ -7,7 +7,7 @@ function should work - however, may need to be implemented differently
 if different data types are used in a Hash Table subclass
 
 */
-#include "hashTable.h"
+#include "hashtable.h"
 #include <cstddef>
 
 
