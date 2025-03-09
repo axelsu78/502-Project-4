@@ -1,7 +1,7 @@
 #include "comedyfactory.h"
 #include "comedymovie.h"
 
-std::shared_ptr<Movie> createMovie(const MovieParams& params){
+std::shared_ptr<Movie> ComedyFactory::createMovie(const MovieParams& params){
    return std::make_shared<ComedyMovie>(
        params.title, 
        params.director, 
@@ -11,7 +11,7 @@ std::shared_ptr<Movie> createMovie(const MovieParams& params){
    );
 }
 
-std::shared_ptr<Movie> createSearchKey(const MovieParams& params){
+std::shared_ptr<Movie> ComedyFactory::createSearchKey(const MovieParams& params){
    return std::make_shared<ComedyMovie>(
       params.title, 
       "", 

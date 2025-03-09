@@ -24,8 +24,6 @@ MovieParams(
    media(media)
 {}
 
-~MovieParams();
-
    string title;
    string director;
    int releaseYear;

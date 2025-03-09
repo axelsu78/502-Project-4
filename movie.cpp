@@ -4,26 +4,26 @@
 */
 #include "movie.h" 
 
-// Provide minimal implementations for comparison operators
-bool Movie::operator<(const Movie& /*rhs*/) const {
-   return false;
-}
+// These should be pure virtual, commenting out just in case I need them
+// bool Movie::operator<(const Movie& /*rhs*/) const {
+//    return false;
+// }
 
-bool Movie::operator>(const Movie& /*rhs*/) const {
-   return false;
-}
+// bool Movie::operator>(const Movie& /*rhs*/) const {
+//    return false;
+// }
 
-bool Movie::operator==(const Movie& /*rhs*/) const {
-   return false;
-}
+// bool Movie::operator==(const Movie& /*rhs*/) const {
+//    return false;
+// }
 
-bool Movie::operator!=(const Movie& /*rhs*/) const {
-   return false;
-}
+// bool Movie::operator!=(const Movie& /*rhs*/) const {
+//    return false;
+// }
 
-bool Movie::mergeWith(const std::shared_ptr<Movie>& /*other*/) {
-   return false;
-}
+// bool Movie::mergeWith(const std::shared_ptr<Movie>& /*other*/) {
+//    return false;
+// }
 
 void Movie::printMovie() {
    std::cout << title << ", " << stock << std::endl;
