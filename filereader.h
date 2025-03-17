@@ -15,9 +15,10 @@ using namespace std;
 */
 class FileReader {
 public:
-    void readCommands(ifstream infile); // reads commands from file
-    void readCustomers(ifstream infile); // reads customers from file
-    void readMovies(ifstream infile); // reads movies from file
+   FileReader(); // constructor
+   void readCommands(ifstream infile); // reads commands from file
+   void readCustomers(ifstream infile); // reads customers from file
+   void readMovies(ifstream infile); // reads movies from file
 };
 
 #endif

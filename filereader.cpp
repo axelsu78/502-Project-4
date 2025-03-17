@@ -8,6 +8,11 @@
  #include <iostream>
  using namespace std;
 
+ 
+ FileReader::FileReader() {
+    
+ }
+ 
  void FileReader::readCommands(ifstream infile) {
     string command;
     while (infile >> command) {
