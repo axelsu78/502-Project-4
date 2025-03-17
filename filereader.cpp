@@ -1,34 +1,33 @@
- /* Axel Sundstrom, Cameron Chen
-    CSS 502 Assignment 4
-    File Reader Class
- */
+/* Axel Sundstrom, Cameron Chen
+   CSS 502 Assignment 4
+   File Reader Class
+*/
+#include "filereader.h"
+#include <fstream>
+#include <iostream>
+using namespace std;
 
- #include "filereader.h"
- #include <fstream>
- #include <iostream>
- using namespace std;
-
- 
- FileReader::FileReader() {
+FileReader::FileReader() {
     
- }
- 
- void FileReader::readCommands(ifstream infile) {
+}
+
+void FileReader::readCommands(ifstream &infile) {
     string command;
     while (infile >> command) {
         cout << command << endl;
     }
- }
+}
 
- void FileReader::readCustomers(ifstream infile) {
+void FileReader::readCustomers(ifstream &infile) {
     string id;
     string firstName;
     string lastName;
     while (infile >> id >> firstName >> lastName) {
         cout << id << " " << firstName << " " << lastName << endl;
     }
- }
- void FileReader::readMovies(ifstream infile) {
+}
+
+void FileReader::readMovies(ifstream &infile) {
     string type;
     string stock;
     string director;
@@ -47,5 +46,5 @@
             infile >> stock >> director >> title >> actor >> releaseMonth >> releaseYear;
             cout << type << " " << stock << " " << director << " " << title << " " << actor << " " << releaseMonth << " " << releaseYear << endl;
         }
-    }   
- }
+    }
+}

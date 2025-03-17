@@ -5,11 +5,12 @@
  
 #include "filereader.h"
 #include <fstream>
-#include <iostream>
+#include <iostream> 
 using namespace std;
 
 int main() {
     FileReader reader;
+    
     ifstream infile("data4movies.txt");
     reader.readMovies(infile);
     infile.close();

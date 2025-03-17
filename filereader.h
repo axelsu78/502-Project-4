@@ -5,9 +5,6 @@
 
 #ifndef FILEREADER_H
 #define FILEREADER_H
-#include <iostream>
-#include <fstream>
-
 using namespace std;
 
 /* File Reader Class
@@ -16,9 +13,9 @@ using namespace std;
 class FileReader {
 public:
    FileReader(); // constructor
-   void readCommands(ifstream infile); // reads commands from file
-   void readCustomers(ifstream infile); // reads customers from file
-   void readMovies(ifstream infile); // reads movies from file
+   void readCommands(ifstream &infile); // reads commands from file
+   void readCustomers(ifstream &infile); // reads customers from file
+   void readMovies(ifstream &infile); // reads movies from file
 };
 
-#endif
+#endif 
