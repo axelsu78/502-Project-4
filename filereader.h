@@ -5,6 +5,8 @@
 
 #ifndef FILEREADER_H
 #define FILEREADER_H
+#include <fstream>
+#include <iostream>
 using namespace std;
 
 /* File Reader Class
