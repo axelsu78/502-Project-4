@@ -48,44 +48,22 @@ void FileReader::readMovies(ifstream &infile) {
         
         // For type "C", read actor and releaseMonth
         if (type == "C") {
-            getline(ss, actor, ',');
-            getline(ss, releaseMonth, ',');
-        }
-        
-        // Read releaseYear (last part, no comma)
-        getline(ss, releaseYear);
-        
-        // Print based on type
-        if (type == "C") {
-            cout << "C" << " " << stock << " " << director << " " << title << " " << actor << " " << releaseMonth << " " << releaseYear << endl;
-        } else if (type == "F" || type == "D") {
+            while (getline(ss, actor, ',')) { // Keep reading actors until no more commas
+                getline(ss, releaseMonth, ','); // Read releaseMonth after actor
+                getline(ss, releaseYear); // Read releaseYear (last part, no comma)
+                
+                // Print for each actor in type "C"
+                cout << "C " << stock << " " << director << " " << title << " " 
+                     << actor << " " << releaseMonth << " " << releaseYear << endl;
+            }
+        } 
+        // Handle type "F" or "D"
+        else if (type == "F" || type == "D") {
+            getline(ss, releaseYear); // Read the releaseYear for F and D types
             cout << type << " " << stock << " " << director << " " << title << " " << releaseYear << endl;
-        } else {
-            cout << "Invalid movie type" << endl;
-        }
-    }
-}
-/*
-void FileReader::readMovies(ifstream &infile) {
-    string type;
-    while (infile >> type) {
-        string stock;
-        string director;
-        string title;
-        string actor;
-        string releaseMonth;
-        string releaseYear;
-        if (type == "F" || type == "D") {
-            infile >> stock >> director >> title >> releaseYear;
-            cout << type << " " << stock << " " << director << " " << title << " " << releaseYear << endl;
-        } else if (type == "C") {
-            infile >> stock >> director >> title >> actor >> releaseMonth >> releaseYear;
-            cout << type << " " << stock << " " << director << " " << title << " " << actor << " " << releaseMonth << " " << releaseYear << endl;
         }
         else {
-            cout << "Invalid movie type" << endl;
+            cout << "Invalid movie type: " << type << endl;
         }
     }
 }
-
-*/
