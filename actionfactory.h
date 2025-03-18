@@ -4,6 +4,9 @@
 #include "customer.h"
 #include "movie.h"
 
+/* Action Factory Class
+   -- creates actions
+*/
 class ActionFactory {
 
 public:
