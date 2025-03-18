@@ -13,5 +13,5 @@ using namespace std;
 bool ActionFactory::createAction(std::shared_ptr<Customer> customer, std::shared_ptr<Movie> movie) {
     cout << "ActionFactory::createAction" << endl;
     return false;
-}
+};
 
