@@ -1,6 +1,6 @@
-/* Axel Sundstrom, Cameron Chen, Kalina Gavrilova, Vidushi Singla
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
-   Inventory Class
+   Store Class
 */
 
 #ifndef STORE_H
@@ -29,4 +29,7 @@ public:
 
 private:
 
+   HashTable<int, Customer*> *customers;       // hash table of customers
+   MovieBST *inventory;                        // binary search tree of movies
+};
 #endif
