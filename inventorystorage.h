@@ -21,6 +21,11 @@ using namespace std;
 
 class InventoryStorage {
 public:
+    
+    InventoryStorage();
+
+    ~InventoryStorage();
+
     void getInventory() const; // displays inventory of movies
 
 private:

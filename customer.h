@@ -32,6 +32,10 @@ private:
 
    int customerID;
 
+   string firstName;
+
+   string lastName;
+
    std::vector<std::shared_ptr<Action>> history;
 
 
