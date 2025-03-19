@@ -8,7 +8,7 @@
 #include <cassert>
 #include <vector>
 #include <memory>
-#include "hashTable.h"
+#include "hashtable.h"
 
 // Simple class to use as a value in the hash table
 class MovieBST {
