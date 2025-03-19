@@ -8,6 +8,7 @@
 #include "customer.h"
 #include "hashtable.h"
 #include "moviebst.h"
+#include "inventorystorage.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -26,6 +27,6 @@ int Store::getMovieCount(Movie *movie) {
     return inventory->getMovieCount(movie);
 }
 
-void Store::inventory() {
+void Store::getInventory() {
     inventory->display();
 }
