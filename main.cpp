@@ -82,14 +82,14 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
             if (moviePtr){
                switch (commandType) {
                   case 'B': { // Borrow
-                     bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr, amount);
+                     bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr);
                      if (!success) {
                         cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
                      }
                      break;
                   }
                   case 'R': { // Return
-                     bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr, amount);
+                     bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr);
                      if (!success){
                         cout << "Failed to return: " << moviePtr->getTitle() << endl;
                      }
@@ -122,14 +122,14 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
          if (moviePtr){
             switch (commandType) {
                case 'B': { // Borrow
-                  bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr, amount);
+                  bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr);
                   if (!success) {
                      cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
                   }
                   break;
               }
                case 'R': { // Return
-                  bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr, amount);
+                  bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr);
                   if (!success){
                      cout << "Failed to return: " << moviePtr->getTitle() << endl;
                   }
