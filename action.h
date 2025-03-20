@@ -25,4 +25,8 @@ public:
 
    virtual string getActionType() const = 0;
 
+   virtual string getMovie() = 0;
+
+   virtual int getCount() = 0;
+
 };

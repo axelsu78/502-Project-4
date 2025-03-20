@@ -139,7 +139,7 @@ std::shared_ptr<Movie> MovieBST<Movie>::retrieve(std::shared_ptr<Movie> tempSear
 }
 
 template <typename Movie>
-void MovieBST<Movie>::display(){
+void MovieBST<Movie>::display() const{
    if (root != nullptr){
       displayHelper(root);
    }

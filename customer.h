@@ -24,9 +24,11 @@ public:
 
    ~Customer();
 
-   std::vector<std::unique_ptr<Action>> getHistory() const;
+   void getHistory() const;
 
    bool addHistory(std::shared_ptr<Action> action);
+
+   string getName();
 
 private:
 

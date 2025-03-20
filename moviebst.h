@@ -54,7 +54,7 @@ bool insert(std::shared_ptr<Movie> movie);
 std::shared_ptr<Movie> retrieve(std::shared_ptr<Movie> tempSearchKey);
 
 // display
-void display();
+void display() const;
 
 };
 

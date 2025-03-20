@@ -10,3 +10,11 @@ bool Return::execute(){
 string Return::getActionType() const{
    return "Return";
 }
+
+string Return::getMovie(){
+   return movie->getTitle();
+}
+
+int Return::getCount(){
+   return amount;
+}

@@ -27,8 +27,6 @@ public:
     
     InventoryStorage();
 
-    ~InventoryStorage();
-
     void getInventory() const; // displays inventory of movies
 
     HashTable<char, std::unique_ptr<MovieBST<Movie>>> movieSearchTable;

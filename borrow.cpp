@@ -15,3 +15,11 @@ bool Borrow::execute(){
 string Borrow::getActionType() const{
    return "Borrow";
 }
+
+string Borrow::getMovie(){
+   return movie->getTitle();
+}
+
+int Borrow::getCount(){
+   return amount;
+}

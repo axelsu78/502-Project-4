@@ -15,4 +15,8 @@ public:
 
    string getActionType() const override;
 
+   string getMovie();
+
+   int getCount();
+
 };
