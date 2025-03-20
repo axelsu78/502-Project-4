@@ -1,6 +1,8 @@
 #include "customer.h"
 #include "action.h"
 
+using namespace std;
+
 void Customer::getHistory() const{
    
    if (history.size() == 0){
