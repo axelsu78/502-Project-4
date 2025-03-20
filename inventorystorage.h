@@ -10,6 +10,9 @@
 #include "hashtable.h"
 #include "action.h"
 #include "actionfactory.h"
+#include "comedyfactory.h"
+#include "classicfactory.h"
+#include "dramafactory.h"
 #include "moviefactory.h"
 #include <iostream>
 
@@ -36,6 +39,8 @@ public:
     vector<string> customerCommands;
     vector<string> movieCommands;
     vector<string> actionCommands;
+
+    ComedyFactory comedyFactory;
 
     MovieBST<Movie> comedyTree;
     MovieBST<Movie> dramaTree;

@@ -59,14 +59,14 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
             getline(ss, director, ',');
             getline(ss, title, ',');
             getline(ss, releaseYear, ',');
-            stoi(stock);
-            stoi(releaseYear);
+            int stockInt = stoi(stock);
+            int yearInt = stoi(releaseYear);
 
             std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
 
-            MovieParams* params = new MovieParams(title, director, releaseYear, stock, dvd);
+            MovieParams* params = new MovieParams(title, director, yearInt, stockInt, dvd);
 
-
+            InventoryStorage.comedyFactory.createMovie(const params&);
 
         }
         else if (type == "D"){
