@@ -237,11 +237,11 @@ void processCommands(const string& cmd, InventoryStorage& inventory){
          break;
       }
       case 'B':{
-
+         parseCommand(cmd, inventory);
          break;
       }
       case 'R':{
-
+         parseCommand(cmd, inventory);
          break;
       }
       default:
@@ -258,8 +258,35 @@ int main(){
 
    FileReader fileReader;
 
+      // Read customer data
+    ifstream customerFile("data4customers.txt");
+    if (!customerFile) {
+        cerr << "Error: Unable to open customer file" << endl;
+        return 1;
+    }
+    fileReader.readCustomers(customerFile, inventory);
+    customerFile.close();
+    
+    // Read movie data
+    ifstream movieFile("data4movies.txt");
+    if (!movieFile) {
+        cerr << "Error: Unable to open movie file" << endl;
+        return 1;
+    }
+    fileReader.readMovies(movieFile, inventory);
+    movieFile.close();
+    
+    // Read command data
+    ifstream commandFile("data4commands.txt");
+    if (!commandFile) {
+        cerr << "Error: Unable to open command file" << endl;
+        return 1;
+    }
+    inventory.actionCommands = fileReader.readCommands(commandFile);
+    commandFile.close();
+
    for (const auto& cmd : inventory.actionCommands){
-      parseCommand(cmd, inventory);
+      processCommands(cmd, inventory);
       cout << endl;
    }
 
