@@ -36,6 +36,12 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
 
    ss >> commandType >> customerID >> mediaType >> movieType >> amount;
 
+   if (ss.fail()) {
+      cout << "Error: Command format invalid - missing required parameters" << endl;
+      cout << "Expected format: [B/R] [customerID] [mediaType] [movieType] [amount]" << endl;
+      return;
+   }
+
    auto customerPtr = inventory.customerSearchTable.find(customerID);
       if (!customerPtr){
          cout << "Customer not found" << endl;
@@ -52,7 +58,39 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
 
    switch (movieType) {
       case 'F': {
-         
+         size_t commaPos = movieData.find(',');
+         if (commaPos != string::npos) {
+            string title = movieData.substr(0, commaPos);
+            int releaseYear = stoi(movieData.substr(commaPos + 1));
+
+            MovieParams params(title, "", releaseYear, 0, nullptr);
+
+            shared_ptr<Movie> searchKey = inventory.comedyFactory.createSearchKey(params);
+            auto moviePtr = inventory.comedyTree.retrieve(searchKey);
+            if (moviePtr){
+               unique_ptr<Action> action;
+               switch (commandType) {
+                  case 'B': { // Borrow
+                     bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr, amount);
+                     if (!success) {
+                        cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
+                     }
+                     break;
+                 }
+                  case 'R': { // Return
+                     bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr, amount);
+                     if (!success){
+                        cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
+                     }
+                     break;
+                  }
+               default:
+                  cout << "Unknown action type: " << commandType << endl;
+                  return;
+               }
+            }
+         }
+         break;
       }
       case 'D': {
         size_t commaPos = movieData.find(',');
@@ -66,7 +104,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
                 title = title.substr(0, title.length() - 1);
             }
 
-            MovieParams params(title, director, 0, 0, nullptr);
+         MovieParams params(title, director, 0, 0, nullptr);
 
          shared_ptr<Movie> searchKey = inventory.dramaFactory.createSearchKey(params);
          auto moviePtr = inventory.dramaTree.retrieve(searchKey);
