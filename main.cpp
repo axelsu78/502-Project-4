@@ -42,35 +42,18 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
    // for each movie type, create search key to find the movie in the appropriate BST
    string searchKey;
    switch (movieType) {
-      case 'F': { 
-         string title;
-         int year;
-         stringstream movieStream(movieData);
-         getline(movieStream, title, ',');
-         movieStream >> year;
-         searchKey = title + to_string(year);
+      case 'F': {
+         searchKey = inventory.comedyFactory.createSearchKey(movieData)->getSearchKey();
          break;
       }
-
-      case 'D': { 
-         string director, title;
-         stringstream movieStream(movieData);
-         getline(movieStream, director, ',');
-         getline(movieStream, title, ',');
-         searchKey = director + title;
+      case 'D': {
+         searchKey = inventory.dramaFactory.createSearchKey(movieData)->getSearchKey();
          break;
       }
-
-      case 'C': { 
-         int month, year;
-         string actor;
-         stringstream movieStream(movieData);
-         movieStream >> month >> year;
-         getline(movieStream, actor);
-         searchKey = to_string(month) + to_string(year) + actor;
+      case 'C': {
+         searchKey = inventory.classicFactory.createSearchKey(movieData)->getSearchKey();
          break;
       }
-
       default:
          cout << "Unknown movie type: " << movieType << endl;
          return;
@@ -105,7 +88,6 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
    } else {
       cout << "Error: Movie not found in inventory" << endl;
    }   
-
 }
 
 
