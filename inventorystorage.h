@@ -41,6 +41,8 @@ public:
     vector<string> actionCommands;
 
     ComedyFactory comedyFactory;
+    DramaFactory dramaFactory;
+    ClassicFactory classicFactory;
 
     MovieBST<Movie> comedyTree;
     MovieBST<Movie> dramaTree;

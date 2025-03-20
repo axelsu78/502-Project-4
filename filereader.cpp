@@ -45,7 +45,7 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
         
         getline(ss, type, ',');
         if (type == "C") {
-            string releaseMonth, releaseYear;
+            string releaseMonth, leadActor;
             while (getline(ss, actor, ',')) { 
                 getline(ss, releaseMonth, ','); 
                 getline(ss, releaseYear); 
@@ -54,7 +54,7 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
                      << actor << " " << releaseMonth << " " << releaseYear << endl;
             }
         }
-         
+
         else if (type == "F") {
             getline(ss, stock, ',');
             getline(ss, director, ',');
@@ -73,7 +73,20 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
 
         }
         else if (type == "D"){
-            
+            getline(ss, stock, ',');
+            getline(ss, director, ',');
+            getline(ss, title, ',');
+            getline(ss, releaseYear, ',');
+            int stockInt = stoi(stock);
+            int yearInt = stoi(releaseYear);
+
+            std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
+
+            MovieParams* params = new MovieParams(title, director, yearInt, stockInt, dvd);
+
+            auto movie = inventory.dramaFactory.createMovie(*params);
+
+            inventory.dramaTree.insert(movie);
         }
         else {
             cout << "Invalid movie type: " << type << endl;
