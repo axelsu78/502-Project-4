@@ -1,8 +1,10 @@
 //Action
 #pragma once
 #include <memory>
-#include "movie.h"
-#include "customer.h"
+
+
+class Movie;
+class Customer;
 
 using string = std::string;
 

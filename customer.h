@@ -6,7 +6,10 @@
 
 #include <iostream>
 #include <vector>
-#include "action.h"
+#include <memory>
+
+
+class Action;
 
 using string = std::string;
 
