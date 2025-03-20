@@ -1,3 +1,7 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 - Assignment 4
+   ReturnFactory class
+*/
 #pragma once
 
 #include "actionfactory.h"
