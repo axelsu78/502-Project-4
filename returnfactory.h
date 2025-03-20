@@ -5,6 +5,7 @@
 #pragma once
 
 #include "actionfactory.h"
+#include "action.h"
 
 class ReturnFactory : public ActionFactory {
 

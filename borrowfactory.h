@@ -1,6 +1,7 @@
 #pragma once
 
 #include "actionfactory.h"
+#include "action.h"
 
 class BorrowFactory : public ActionFactory {
 
