@@ -20,7 +20,7 @@ class Customer {
 
 public:
 
-   Customer(int customerID);
+   Customer(int customerID, string firstName, string lastName);
 
    ~Customer();
 
@@ -50,6 +50,5 @@ private:
    string lastName;
 
    std::vector<std::shared_ptr<Action>> history;
-
 
 };

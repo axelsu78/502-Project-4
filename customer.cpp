@@ -8,9 +8,9 @@ void Customer::getHistory() const{
    
    for (const auto action : history){
       if (action->getActionType() == "Borrow"){
-         cout << "Borrowed " << action->getCount() << " copies of " << action->getMovie() << endl;
+         cout << "Borrowed " << action->getMovie() << endl;
       } else if (action->getActionType() == "Return"){
-         cout << "Returned " << action->getCount() << " copies of " << action->getMovie() << endl;
+         cout << "Returned " << action->getMovie() << endl;
       } else {
          cout << "Error returning action type" << endl;
       }
