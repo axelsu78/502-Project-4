@@ -8,6 +8,8 @@
 #include "action.h"
 #include "customer.h"
 #include "movie.h"
+#include "borrowfactory.h"
+#include "returnfactory.h"
 
 using namespace std;
 
@@ -26,7 +28,7 @@ using namespace std;
 
 // file read commands
 
-void parseCommand(const string& cmd){
+void parseCommand(const string& cmd, InventoryStorage& inventory){
    stringstream ss(cmd);
    char commandType;
    int customerID;
@@ -37,15 +39,72 @@ void parseCommand(const string& cmd){
    string movieData;
    getline(ss, movieData);
    
+   // for each movie type, create search key to find the movie in the appropriate BST
+   string searchKey;
+   switch (movieType) {
+      case 'F': { 
+         string title;
+         int year;
+         stringstream movieStream(movieData);
+         getline(movieStream, title, ',');
+         movieStream >> year;
+         searchKey = title + to_string(year);
+         break;
+      }
 
-   // for each type, use create search key to find the movie in the appropriate BST
-   // borrow and return have different formats
-   // for each different movie type - comedy titled year, drama director title year, classic month year actor title
+      case 'D': { 
+         string director, title;
+         stringstream movieStream(movieData);
+         getline(movieStream, director, ',');
+         getline(movieStream, title, ',');
+         searchKey = director + title;
+         break;
+      }
 
-   // if the movie is found, call the appropriate action factory to create the action
-   // call the execute method on the action
-   // if the movie is not found, print an error message
-   
+      case 'C': { 
+         int month, year;
+         string actor;
+         stringstream movieStream(movieData);
+         movieStream >> month >> year;
+         getline(movieStream, actor);
+         searchKey = to_string(month) + to_string(year) + actor;
+         break;
+      }
+
+      default:
+         cout << "Unknown movie type: " << movieType << endl;
+         return;
+   }
+   // Find the movie in inventory
+   auto moviePtr = inventory.movieBST.find(searchKey);
+   // Create appropriate action using action
+   if (moviePtr) {
+      unique_ptr<Action> action;
+      switch (commandType) {
+         case 'B': { // Borrow
+            BorrowFactory borrowFactory;
+            action = borrowFactory.createAction();
+            break;
+         }
+         case 'R': { // Return
+            ReturnFactory returnFactory;
+            action = returnFactory.createAction();
+            break;
+         }
+         default:
+            cout << "Unknown action type: " << commandType << endl;
+            return;
+      }
+      // Call the execute method on the action
+      if (action) {
+         action->execute();
+      } else {
+         cout << "Error: Action creation failed" << endl;
+      }
+   // movie not found in inventory
+   } else {
+      cout << "Error: Movie not found in inventory" << endl;
+   }   
 
 }
 
@@ -101,7 +160,7 @@ int main(){
    FileReader fileReader;
 
    for (const auto& cmd : inventory.actionCommands){
-      processCommands(cmd, inventory);
+      parseCommand(cmd, inventory);
       cout << endl;
    }
 
