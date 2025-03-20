@@ -53,7 +53,8 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
                 cout << "C " << stock << " " << director << " " << title << " " 
                      << actor << " " << releaseMonth << " " << releaseYear << endl;
             }
-        } 
+        }
+         
         else if (type == "F") {
             getline(ss, stock, ',');
             getline(ss, director, ',');
@@ -66,7 +67,9 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
 
             MovieParams* params = new MovieParams(title, director, yearInt, stockInt, dvd);
 
-            InventoryStorage.comedyFactory.createMovie(const params&);
+            auto movie = inventory.comedyFactory.createMovie(*params);
+
+            inventory.comedyTree.insert(movie);
 
         }
         else if (type == "D"){

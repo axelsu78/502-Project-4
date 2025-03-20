@@ -18,7 +18,7 @@ public:
    FileReader(); // constructor
    vector<std::string> readCommands(ifstream &infile); // reads commands from file
    void readCustomers(ifstream &infile, InventoryStorage& inventory); // reads customers from file
-   vector<std::string> readMovies(ifstream &infile); // reads movies from file
+   vector<std::string> readMovies(ifstream &infile, InventoryStorage& inventory); // reads movies from file
 };
 
 #endif 
