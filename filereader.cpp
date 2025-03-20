@@ -57,7 +57,9 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
             int yearInt = stoi(releaseYear);
 
             std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
-            MovieParams* params = new MovieParams(title, director, yearInt, stockInt, dvd, leadActor, monthInt);
+            MovieParams* params = new MovieParams(title, director, yearInt, stockInt, dvd);
+            params->addActor(leadActor);
+            params->setReleaseMonth(monthInt);
             auto movie = inventory.classicFactory.createMovie(*params);
             inventory.classicTree.insert(movie);
         }
