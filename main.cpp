@@ -55,10 +55,12 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
    string searchstring;
 
    searchstring = movieData.substr(movieData.find_first_not_of(" \t"));
-
+   size_t commaPos;
+   size_t spacePos;
+   size_t firstDigit;
    switch (movieType) {
       case 'F': {
-         size_t commaPos = movieData.find(',');
+         commaPos = movieData.find(',');
          if (commaPos != string::npos) {
             string title = movieData.substr(0, commaPos);
             
@@ -68,7 +70,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
            
            // Get the release year part, trimming leading whitespace
             string yearPart = movieData.substr(commaPos + 1);
-            size_t firstDigit = yearPart.find_first_not_of(" \t");
+            firstDigit = yearPart.find_first_not_of(" \t");
             if (firstDigit != string::npos) {
                yearPart = yearPart.substr(firstDigit);
             }
@@ -104,7 +106,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
          break;
       }
       case 'D': {
-        size_t commaPos = movieData.find(',');
+        commaPos = movieData.find(',');
         if (commaPos != string::npos) {
             string director = movieData.substr(0, commaPos);
             string title = movieData.substr(commaPos + 1);
@@ -160,7 +162,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
          actorFullName = actorFullName.substr(actorFullName.find_first_not_of(" \t"));
          
          // Split into first and last names if space exists
-         size_t spacePos = actorFullName.find(' ');
+         spacePos = actorFullName.find(' ');
          if (spacePos != string::npos) {
              actorFirstName = actorFullName.substr(0, spacePos);
              actorLastName = actorFullName.substr(spacePos + 1);
