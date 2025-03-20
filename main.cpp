@@ -61,14 +61,25 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
          size_t commaPos = movieData.find(',');
          if (commaPos != string::npos) {
             string title = movieData.substr(0, commaPos);
-            int releaseYear = stoi(movieData.substr(commaPos + 1));
+            
+            while (!title.empty() && isspace(title.back())) {
+               title.pop_back();
+            }
+           
+           // Get the release year part, trimming leading whitespace
+            string yearPart = movieData.substr(commaPos + 1);
+            size_t firstDigit = yearPart.find_first_not_of(" \t");
+            if (firstDigit != string::npos) {
+               yearPart = yearPart.substr(firstDigit);
+            }
+            
+            int releaseYear = stoi(yearPart);
 
             MovieParams params(title, "", releaseYear, 0, nullptr);
 
             shared_ptr<Movie> searchKey = inventory.comedyFactory.createSearchKey(params);
             auto moviePtr = inventory.comedyTree.retrieve(searchKey);
             if (moviePtr){
-               unique_ptr<Action> action;
                switch (commandType) {
                   case 'B': { // Borrow
                      bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr, amount);
@@ -76,11 +87,11 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
                         cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
                      }
                      break;
-                 }
+                  }
                   case 'R': { // Return
                      bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr, amount);
                      if (!success){
-                        cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
+                        cout << "Failed to return: " << moviePtr->getTitle() << endl;
                      }
                      break;
                   }
@@ -109,7 +120,6 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
          shared_ptr<Movie> searchKey = inventory.dramaFactory.createSearchKey(params);
          auto moviePtr = inventory.dramaTree.retrieve(searchKey);
          if (moviePtr){
-            unique_ptr<Action> action;
             switch (commandType) {
                case 'B': { // Borrow
                   bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr, amount);
@@ -121,7 +131,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
                case 'R': { // Return
                   bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr, amount);
                   if (!success){
-                     cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
+                     cout << "Failed to return: " << moviePtr->getTitle() << endl;
                   }
                   break;
                }
