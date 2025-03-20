@@ -14,6 +14,8 @@
 #include "classicfactory.h"
 #include "dramafactory.h"
 #include "moviefactory.h"
+#include "borrowfactory.h"
+#include "returnfactory.h"
 #include <iostream>
 
 using namespace std;
@@ -42,6 +44,9 @@ public:
     ComedyFactory comedyFactory;
     DramaFactory dramaFactory;
     ClassicFactory classicFactory;
+
+    BorrowFactory borrowFactory;
+    ReturnFactory returnFactory;
 
     MovieBST<Movie> comedyTree;
     MovieBST<Movie> dramaTree;
