@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include "inventorystorage.h"
+#include "action.h"
 using namespace std;
 
 /* File Reader Class

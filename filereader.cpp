@@ -6,6 +6,7 @@
 #include "inventorystorage.h"
 #include "dvd.h"
 #include "mediatype.h"
+#include "action.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
