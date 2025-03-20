@@ -19,7 +19,8 @@
 using namespace std;
 
 /* InventoryStorage class
-   -- stores inventory of Movie objects in a rental system
+   Contains all data structures used to store data
+   -- sidenote: probably should be renamed to "Store" but didn't feel like refactoring
 */
 
 class InventoryStorage {
@@ -27,15 +28,15 @@ public:
     
     InventoryStorage();
 
-    void getInventory() const; // displays inventory of movies
+    /**
+     * @brief displays all movies in inventory
+     * 
+     */
+    void getInventory() const;
 
-    HashTable<char, std::unique_ptr<MovieBST<Movie>>> movieSearchTable;
     HashTable<int, std::shared_ptr<Customer>> customerSearchTable;
-    HashTable<char, std::unique_ptr<ActionFactory>> actionFactoryTable;
-    HashTable<char, std::shared_ptr<MovieFactory>> movieFactoryTable;
     
-    vector<string> customerCommands;
-    vector<string> movieCommands;
+    // vector containing all valid action commands
     vector<string> actionCommands;
 
     ComedyFactory comedyFactory;

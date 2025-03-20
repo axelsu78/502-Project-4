@@ -37,6 +37,7 @@ void parseCommand(const string& cmd){
    string movieData;
    getline(ss, movieData);
    
+
    // for each type, use create search key to find the movie in the appropriate BST
    // borrow and return have different formats
    // for each different movie type - comedy titled year, drama director title year, classic month year actor title

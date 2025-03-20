@@ -54,6 +54,14 @@ public:
     
     virtual string getMedia() const;
 
+    /**
+     * @brief if two movies share the same values when adding to a data structure, they increase each other's stock
+     * (and in classic's case add the additional lead actor) instead of creating two separate objects
+     * 
+     * @param other movie to be compared to
+     * @return true movies were merged
+     * @return false movies weren't merged
+     */
     virtual bool mergeWith(const shared_ptr<Movie>& other) = 0;
 
     virtual void printMovie();

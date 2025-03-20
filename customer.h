@@ -24,11 +24,22 @@ public:
 
    ~Customer();
 
+   /**
+    * @brief prints all transactions conducted by customer
+    * 
+    */
    void getHistory() const;
 
+   /**
+    * @brief adds Action item (Borrow/Return) to vector of actions
+    * 
+    * @param action 
+    * @return true 
+    * @return false 
+    */
    bool addHistory(std::shared_ptr<Action> action);
 
-   string getName();
+   string printName();
 
 private:
 

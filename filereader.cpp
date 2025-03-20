@@ -36,7 +36,7 @@ void FileReader::readCustomers(ifstream &infile, InventoryStorage& inventory) {
     }
 }
 
-vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
+void FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
     string line;
     vector<std::string> movieCommands;
     while (getline(infile, line)) {  

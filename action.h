@@ -21,6 +21,9 @@ public:
 
    virtual ~Action() = default;
 
+   /**
+    * @brief completes associated action associated with subclass
+    */
    virtual bool execute() = 0;
 
    virtual string getActionType() const = 0;
