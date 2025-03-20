@@ -21,16 +21,20 @@ vector<std::string> FileReader::readCommands(ifstream &infile) {
     return actionCommands;
 }
 
-void FileReader::readCustomers(ifstream &infile) {
+vector<Customer> FileReader::readCustomers(ifstream &infile) {
     string id;
     string firstName;
     string lastName;
+    vector<Customer> customers;
+
     while (infile >> id >> firstName >> lastName) {
         cout << id << " " << firstName << " " << lastName << endl;
     }
 }
-void FileReader::readMovies(ifstream &infile) {
+
+vector<std::string> FileReader::readMovies(ifstream &infile) {
     string line;
+    vector<std::string> movieCommands;
     while (getline(infile, line)) {  
         stringstream ss(line);  
         string type, stock, director, title, actor, releaseMonth, releaseYear;

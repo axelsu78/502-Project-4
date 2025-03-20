@@ -7,6 +7,7 @@
 #define FILEREADER_H
 #include <fstream>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 /* File Reader Class
@@ -15,9 +16,9 @@ using namespace std;
 class FileReader {
 public:
    FileReader(); // constructor
-   void readCommands(ifstream &infile); // reads commands from file
-   void readCustomers(ifstream &infile); // reads customers from file
-   void readMovies(ifstream &infile); // reads movies from file
+   vector<std::string> readCommands(ifstream &infile); // reads commands from file
+   vector<Customer> readCustomers(ifstream &infile); // reads customers from file
+   vector<std::string> readMovies(ifstream &infile); // reads movies from file
 };
 
 #endif 
