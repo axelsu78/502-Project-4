@@ -8,8 +8,8 @@ class Borrow : public Action {
 
 public:
 
-   Borrow(std::shared_ptr<Customer> custPtr, std::shared_ptr<Movie> moviePtr)
-   : Action(custPtr, moviePtr) {}
+   Borrow(std::shared_ptr<Customer> custPtr, std::shared_ptr<Movie> moviePtr, int count)
+   : Action(custPtr, moviePtr, count) {}
 
    bool execute() override;
 

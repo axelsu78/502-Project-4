@@ -2,7 +2,7 @@
 
 bool Return::execute(){
    
-   movie->setStock(movie->getStock() + 1);
+   movie->setStock(movie->getStock() + amount);
    return true;
    
 }

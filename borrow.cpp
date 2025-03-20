@@ -6,7 +6,7 @@ bool Borrow::execute(){
       std::cout << "Borrow failed: Out of Stock" << std::endl;
       return false;
    } else {
-      movie->setStock(movie->getStock() - 1);
+      movie->setStock(movie->getStock() - amount);
       return true;
    }
    
