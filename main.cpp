@@ -31,63 +31,79 @@ using namespace std;
 void parseCommand(const string& cmd, InventoryStorage& inventory){
    stringstream ss(cmd);
    char commandType;
-   int customerID;
+   int customerID, amount;
    char mediaType, movieType;
 
-   ss >> commandType >> customerID >> mediaType >> movieType;
+   ss >> commandType >> customerID >> mediaType >> movieType >> amount;
+
+   auto customerPtr = inventory.customerSearchTable.find(customerID);
+      if (!customerPtr){
+         cout << "Customer not found" << endl;
+         return;
+      }
 
    string movieData;
    getline(ss, movieData);
    
    // for each movie type, create search key to find the movie in the appropriate BST
-   string searchKey;
+   string searchstring;
+
+   searchstring = movieData.substr(movieData.find_first_not_of(" \t"));
+
    switch (movieType) {
       case 'F': {
-         searchKey = inventory.comedyFactory.createSearchKey(movieData)->getSearchKey();
-         break;
+         
       }
       case 'D': {
-         searchKey = inventory.dramaFactory.createSearchKey(movieData)->getSearchKey();
+        size_t commaPos = movieData.find(',');
+        if (commaPos != string::npos) {
+            string director = movieData.substr(0, commaPos);
+            string title = movieData.substr(commaPos + 1);
+            
+            
+            title = title.substr(title.find_first_not_of(" \t"));
+            if (title.back() == ',') {
+                title = title.substr(0, title.length() - 1);
+            }
+
+            MovieParams params(title, director, 0, 0, nullptr);
+
+         shared_ptr<Movie> searchKey = inventory.dramaFactory.createSearchKey(params);
+         auto moviePtr = inventory.dramaTree.retrieve(searchKey);
+         if (moviePtr){
+            unique_ptr<Action> action;
+            switch (commandType) {
+               case 'B': { // Borrow
+                  bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr, amount);
+                  if (!success) {
+                     cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
+                  }
+                  break;
+              }
+               case 'R': { // Return
+                  bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr, amount);
+                  if (!success){
+                     cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
+                  }
+                  break;
+               }
+            default:
+               cout << "Unknown action type: " << commandType << endl;
+               return;
+            }
+         }
          break;
       }
       case 'C': {
-         searchKey = inventory.classicFactory.createSearchKey(movieData)->getSearchKey();
+         
          break;
       }
       default:
          cout << "Unknown movie type: " << movieType << endl;
          return;
    }
-   // Find the movie in inventory
-   auto moviePtr = inventory.movieBST.find(searchKey);
-   // Create appropriate action using action
-   if (moviePtr) {
-      unique_ptr<Action> action;
-      switch (commandType) {
-         case 'B': { // Borrow
-            BorrowFactory borrowFactory;
-            action = borrowFactory.createAction();
-            break;
-         }
-         case 'R': { // Return
-            ReturnFactory returnFactory;
-            action = returnFactory.createAction();
-            break;
-         }
-         default:
-            cout << "Unknown action type: " << commandType << endl;
-            return;
-      }
-      // Call the execute method on the action
-      if (action) {
-         action->execute();
-      } else {
-         cout << "Error: Action creation failed" << endl;
-      }
-   // movie not found in inventory
-   } else {
-      cout << "Error: Movie not found in inventory" << endl;
-   }   
+      
+}
 }
 
 
