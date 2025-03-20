@@ -46,13 +46,20 @@ vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& i
         getline(ss, type, ',');
         if (type == "C") {
             string releaseMonth, leadActor;
-            while (getline(ss, actor, ',')) { 
-                getline(ss, releaseMonth, ','); 
-                getline(ss, releaseYear); 
-                
-                cout << "C " << stock << " " << director << " " << title << " " 
-                     << actor << " " << releaseMonth << " " << releaseYear << endl;
-            }
+            getline(ss, stock, ',');
+            getline(ss, director, ',');
+            getline(ss, title, ',');
+            getline(ss, leadActor, ',');
+            getline(ss, releaseMonth, ',');
+            getline(ss, releaseYear, ',');
+            int stockInt = stoi(stock);
+            int monthInt = stoi(releaseMonth);
+            int yearInt = stoi(releaseYear);
+
+            std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
+            MovieParams* params = new MovieParams(title, director, yearInt, stockInt, dvd, leadActor, monthInt);
+            auto movie = inventory.classicFactory.createMovie(*params);
+            inventory.classicTree.insert(movie);
         }
 
         else if (type == "F") {
