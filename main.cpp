@@ -143,9 +143,63 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
          break;
       }
       case 'C': {
+         // Classic format: Month Year Actor
+         istringstream iss(movieData);
+         int month, year;
+         string actorFirstName, actorLastName;
          
+         // Read the month and year
+         if (!(iss >> month >> year)) {
+             cout << "Invalid classic movie format. Expected: Month Year Actor" << endl;
+             return;
+         }
+         
+         // Read the actor's name (rest of the line)
+         string actorFullName;
+         getline(iss, actorFullName);
+         actorFullName = actorFullName.substr(actorFullName.find_first_not_of(" \t"));
+         
+         // Split into first and last names if space exists
+         size_t spacePos = actorFullName.find(' ');
+         if (spacePos != string::npos) {
+             actorFirstName = actorFullName.substr(0, spacePos);
+             actorLastName = actorFullName.substr(spacePos + 1);
+         } else {
+             actorFirstName = actorFullName;
+         }
+         
+         // Create the parameters for searching
+         MovieParams params("", "", year, 0, nullptr);
+         params.setReleaseMonth(month);
+         params.addActor(actorFullName);
+         
+         // Create search key and find the movie
+         shared_ptr<Movie> searchKey = inventory.classicFactory.createSearchKey(params);
+         auto moviePtr = inventory.classicTree.retrieve(searchKey);
+         
+         if (moviePtr) {
+             switch (commandType) {
+                 case 'B': { // Borrow
+                     bool success = inventory.borrowFactory.createAction(*(customerPtr), moviePtr);
+                     if (!success) {
+                         cout << "Failed to borrow: " << moviePtr->getTitle() << endl;
+                     }
+                     break;
+                 }
+                 case 'R': { // Return
+                     bool success = inventory.returnFactory.createAction(*(customerPtr), moviePtr);
+                     if (!success) {
+                         cout << "Failed to return: " << moviePtr->getTitle() << endl;
+                     }
+                     break;
+                 }
+                 default:
+                     cout << "Unknown action type: " << commandType << endl;
+                     return;
+             }
+         }
          break;
-      }
+     }
       default:
          cout << "Unknown movie type: " << movieType << endl;
          return;
