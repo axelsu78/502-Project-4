@@ -36,7 +36,7 @@ void FileReader::readCustomers(ifstream &infile, InventoryStorage& inventory) {
     }
 }
 
-vector<std::string> FileReader::readMovies(ifstream &infile) {
+vector<std::string> FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
     string line;
     vector<std::string> movieCommands;
     while (getline(infile, line)) {  
@@ -65,6 +65,8 @@ vector<std::string> FileReader::readMovies(ifstream &infile) {
             std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
 
             MovieParams* params = new MovieParams(title, director, releaseYear, stock, dvd);
+
+
 
         }
         else if (type == "D"){

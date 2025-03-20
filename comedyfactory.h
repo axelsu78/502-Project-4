@@ -7,6 +7,8 @@ class ComedyFactory : public MovieFactory{
 
 public:
 
+   ComedyFactory();
+
    std::shared_ptr<Movie> createMovie(const MovieParams& params) override;
 
    std::shared_ptr<Movie> createSearchKey(const MovieParams& params) override;
