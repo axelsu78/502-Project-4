@@ -27,14 +27,20 @@ public:
     ~InventoryStorage();
 
     void getInventory() const; // displays inventory of movies
-    
+
     HashTable<char, std::unique_ptr<MovieBST<Movie>>> movieSearchTable;
     HashTable<int, std::shared_ptr<Customer>> customerSearchTable;
     HashTable<char, std::unique_ptr<ActionFactory>> actionFactoryTable;
     HashTable<char, std::shared_ptr<MovieFactory>> movieFactoryTable;
+    
     vector<string> customerCommands;
     vector<string> movieCommands;
     vector<string> actionCommands;
+
+    MovieBST<Movie> comedyTree;
+    MovieBST<Movie> dramaTree;
+    MovieBST<Movie> classicTree;
+
 };
 
 #endif

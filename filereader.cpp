@@ -4,6 +4,8 @@
 */
 #include "filereader.h"
 #include "inventorystorage.h"
+#include "dvd.h"
+#include "mediatype.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -39,13 +41,11 @@ vector<std::string> FileReader::readMovies(ifstream &infile) {
     vector<std::string> movieCommands;
     while (getline(infile, line)) {  
         stringstream ss(line);  
-        string type, stock, director, title, actor, releaseMonth, releaseYear;
+        string type, director, title, actor, stock, releaseYear;
         
         getline(ss, type, ',');
-        getline(ss, stock, ',');
-        getline(ss, director, ',');
-        getline(ss, title, ',');
         if (type == "C") {
+            string releaseMonth, releaseYear;
             while (getline(ss, actor, ',')) { 
                 getline(ss, releaseMonth, ','); 
                 getline(ss, releaseYear); 
@@ -54,9 +54,21 @@ vector<std::string> FileReader::readMovies(ifstream &infile) {
                      << actor << " " << releaseMonth << " " << releaseYear << endl;
             }
         } 
-        else if (type == "F" || type == "D") {
-            getline(ss, releaseYear); 
-            cout << type << " " << stock << " " << director << " " << title << " " << releaseYear << endl;
+        else if (type == "F") {
+            getline(ss, stock, ',');
+            getline(ss, director, ',');
+            getline(ss, title, ',');
+            getline(ss, releaseYear, ',');
+            stoi(stock);
+            stoi(releaseYear);
+
+            std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
+
+            MovieParams* params = new MovieParams(title, director, releaseYear, stock, dvd);
+
+        }
+        else if (type == "D"){
+            
         }
         else {
             cout << "Invalid movie type: " << type << endl;
