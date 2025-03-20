@@ -149,9 +149,8 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
       default:
          cout << "Unknown movie type: " << movieType << endl;
          return;
+      }      
    }
-      
-}
 }
 
 

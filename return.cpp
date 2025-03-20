@@ -14,7 +14,3 @@ string Return::getActionType() const{
 string Return::getMovie(){
    return movie->getTitle();
 }
-
-int Return::getCount(){
-   return amount;
-}

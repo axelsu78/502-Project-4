@@ -14,8 +14,8 @@ protected:
    std::shared_ptr<Movie> movie;
    int amount;
 
-   Action(std::shared_ptr<Customer> custID, std::shared_ptr<Movie> moviePtr, int count) 
-      : customer(custID), movie(moviePtr), amount(count) {}
+   Action(std::shared_ptr<Customer> custID, std::shared_ptr<Movie> moviePtr) 
+      : customer(custID), movie(moviePtr) {}
    
 public:
 
@@ -29,7 +29,5 @@ public:
    virtual string getActionType() const = 0;
 
    virtual string getMovie() = 0;
-
-   virtual int getCount() = 0;
 
 };
