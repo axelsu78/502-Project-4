@@ -65,6 +65,13 @@
       "random": "cpp",
       "string_view": "cpp",
       "sstream": "cpp",
-      "cinttypes": "cpp"
+      "cinttypes": "cpp",
+      "bitset": "cpp",
+      "complex": "cpp",
+      "list": "cpp",
+      "map": "cpp",
+      "set": "cpp",
+      "numbers": "cpp",
+      "typeindex": "cpp"
    }
 }
