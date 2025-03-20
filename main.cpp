@@ -26,6 +26,22 @@ using namespace std;
 
 // file read commands
 
+void parseCommand(const string& cmd){
+   stringstream ss(cmd);
+   char commandType;
+   int customerID;
+   char mediaType, movieType;
+
+   ss >> commandType >> customerID >> mediaType >> movieType;
+
+   string movieData;
+   getline(ss, movieData);
+
+   
+
+}
+
+
 void processCommands(const string& cmd, InventoryStorage& inventory){
    if (cmd.empty()){
       return;
