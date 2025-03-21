@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Movie Binary Search Tree
 */
@@ -9,6 +9,11 @@
 
 template <typename Movie>
 
+/* Movie BST Class
+   -- creates a binary search tree to store movies
+   -- allows for insertion, retrieval, and display of movies
+   -- uses a movie object to store data
+*/
 class MovieBST {
 
 private:

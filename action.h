@@ -1,4 +1,8 @@
-//Action
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Action Class
+*/
+
 #pragma once
 #include <memory>
 
@@ -7,6 +11,13 @@ class Movie;
 class Customer;
 
 using string = std::string;
+
+/* Action Class
+   -- Abstract class for all actions
+   -- execute() completes the action
+   -- getActionType() returns the type of action
+   -- getMovie() returns the movie associated with the action
+*/
 
 class Action {
 

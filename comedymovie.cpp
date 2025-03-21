@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Comedy Movie Class
 */

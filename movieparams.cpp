@@ -1,3 +1,8 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 - Assignment 4
+   MovieParams class
+*/
+
 #include "movieparams.h"
 
 MovieParams& MovieParams::setReleaseMonth(int month) {

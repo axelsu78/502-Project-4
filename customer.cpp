@@ -1,3 +1,8 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Customer Class
+ */
+
 #include "customer.h"
 #include "action.h"
 
@@ -30,15 +35,7 @@ void Customer::getHistory() const{
 }
 
 bool Customer::addHistory(std::shared_ptr<Action> action){
-   std::cout << "DEBUG: Adding action to history. " 
-             << "Action type: " << action->getActionType() 
-             << ", Movie: " << action->getMovie() 
-             << ", History size before: " << history.size() 
-             << std::endl;
-   
    history.push_back(action);
-   
-   std::cout << "DEBUG: History size after: " << history.size() << std::endl;
    return true;
 }
 

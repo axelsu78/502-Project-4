@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Classic Movie Class
 */
@@ -9,6 +9,10 @@
 #include "mediatype.h"
 #include "dvd.h"
 
+/* ClassicMovie Class
+   -- Inherits from Movie
+   -- Represents a Classic Movie
+*/
 
 class ClassicMovie : public Movie {
 

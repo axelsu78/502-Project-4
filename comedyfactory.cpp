@@ -1,3 +1,8 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Comedy Factory Class
+*/
+
 #include "comedyfactory.h"
 #include "comedymovie.h"
 

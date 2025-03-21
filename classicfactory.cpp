@@ -1,7 +1,11 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Classic Factory Class
+*/
+
 #include "classicfactory.h"
 #include "classicmovie.h"
 #include "movieparams.h"
-
 #include "comedyfactory.h"
 
 ClassicFactory::ClassicFactory() {

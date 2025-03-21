@@ -1,3 +1,8 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Drama Factory Class
+*/
+
 #include "dramafactory.h"
 #include "dramamovie.h"
 

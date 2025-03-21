@@ -1,3 +1,7 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Main - driver for Movie Rental System
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,21 +17,26 @@
 
 using namespace std;
 
-// file read customers
-   // add strings to customerCommands
+/* Main 
+   -- compiles with: 
+      
+      g++ movie.cpp movieparams.cpp borrow.cpp return.cpp filereader.cpp customer.cpp 
+      borrowfactory.cpp returnfactory.cpp inventorystorage.cpp 
+      comedymovie.cpp dramamovie.cpp classicmovie.cpp comedyfactory.cpp dramafactory.cpp classicfactory.cpp 
+      main.cpp
 
-// add customers to customer hash table
-   // no need to factory, just use string to create movie
+   -- Driver for the Movie Rental System
+   -- Reads customer, movie, and command data from files
+   -- Processes the commands and performs the appropriate actions
+*/
 
-// file read movies
-   
-
-// add movies to movieBST
-   // call the appropriate moviefactory to create a movie
-   // add that to the appropriate movieBST
-
-// file read commands
-
+/* parseCommand()
+   -- Parses a command string and performs the appropriate action
+   -- cmd: command string to parse
+   -- inventory: InventoryStorage object containing the data
+   -- creates a search key for the movie and searches the appropriate BST
+   -- performs the action on the movie if found
+*/
 void parseCommand(const string& cmd, InventoryStorage& inventory){
    stringstream ss(cmd);
    char commandType;
@@ -213,7 +222,12 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
    }
 }
 
-
+/* processCommands()
+   -- Processes a command string and performs the appropriate action
+   -- cmd: command string to process
+   -- inventory: InventoryStorage object containing the data
+   -- calls the appropriate function based on the command type
+*/
 void processCommands(const string& cmd, InventoryStorage& inventory){
    if (cmd.empty()){
       return;

@@ -1,7 +1,17 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Comedy Factory Class
+*/
+
 #pragma once
 
 #include "moviefactory.h"
 #include "movieparams.h"
+
+/* ComedyFactory Class
+   -- Inherits from MovieFactory
+   -- Factory for creating Comedy Movies
+*/
 
 class ComedyFactory : public MovieFactory{
 

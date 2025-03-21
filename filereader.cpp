@@ -25,15 +25,18 @@ vector<std::string> FileReader::readCommands(ifstream &infile) {
 }
 
 void FileReader::readCustomers(ifstream &infile, InventoryStorage& inventory) {
-    string id;
-    string firstName;
-    string lastName;
-    vector<Customer> customers;
-
-    while (infile >> id >> firstName >> lastName) {
-        int customerID = stoi(id);
-        auto customer = std::make_shared<Customer>(customerID, firstName, lastName);
-        inventory.customerSearchTable.insert(customerID, customer);
+    string line;
+    while (getline(infile, line)) {
+        stringstream ss(line);
+        string id, firstName, lastName;
+        
+        if (ss >> id >> firstName >> lastName) {
+            int customerID = stoi(id);
+            auto customer = std::make_shared<Customer>(customerID, firstName, lastName);
+            inventory.customerSearchTable.insert(customerID, customer);
+        } else {
+            cerr << "Skipping invalid line: " << line << endl;
+        }
     }
 }
 

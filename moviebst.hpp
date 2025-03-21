@@ -1,10 +1,9 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Movie Binary Search Tree
 */
 
 #include "moviebst.h"
-
 
 template <typename Movie>
 MovieBST<Movie>::MovieBST() : root(nullptr){}

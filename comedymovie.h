@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Comedy Movie Header
 */
@@ -8,6 +8,10 @@
 #include "mediatype.h"
 #include "dvd.h"
 
+/* ComedyMovie Class
+   -- Inherits from Movie
+   -- Represents a Comedy Movie
+*/
 
 class ComedyMovie : public Movie {
 

@@ -1,3 +1,8 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 Assignment 4
+   Borrow Action Class 
+*/
+
 #include "borrow.h"
 #include "action.h"
 

@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen, Kalina Gavrilova, Vidushi Singla
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Movie Interface
 */

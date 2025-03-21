@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Drama Movie Header
 */
@@ -8,7 +8,10 @@
 #include "mediatype.h"
 #include "dvd.h"
 
-
+/* DramaMovie Class
+   -- Inherits from Movie
+   -- Represents a Drama Movie
+*/
 class DramaMovie : public Movie {
 
 public:

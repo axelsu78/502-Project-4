@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
 CSS 502 Assignment 4
 HashTable Class
 
@@ -9,8 +9,6 @@ if different data types are used in a Hash Table subclass
 */
 #include "hashtable.h"
 #include <cstddef>
-
-
 
 template <typename K, typename V>
 std::size_t HashTable<K,V>::hash(const K& key) const {

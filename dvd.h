@@ -6,6 +6,11 @@
 
 #include "mediatype.h"
 
+/* DVD Class
+   -- Inherits from MediaType
+   -- Represents a DVD
+*/
+
 class DVD : public MediaType {
 
 public:

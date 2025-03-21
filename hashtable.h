@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    HashTable Class
 
@@ -11,6 +11,20 @@
 #pragma once
 
 #include <cstddef>
+/**
+ * @brief Inserts a key-value pair into the hash table.
+ *
+ * This function inserts the given key and value into the hash table. If the 
+ * load factor exceeds 0.7 after the insertion, the hash table is resized to 
+ * accommodate more elements. The function also ensures that duplicate key-value 
+ * pairs are not inserted.
+ *
+ * @tparam K Type of the key.
+ * @tparam V Type of the value.
+ * @param key The key to be inserted.
+ * @param value The value to be inserted.
+ * @return true if the insertion is successful or if the key-value pair already exists.
+ */
 
 template <typename K, typename V>
 class HashTable {

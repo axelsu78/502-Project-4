@@ -1,35 +1,13 @@
-/* Axel Sundstrom, Cameron Chen
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Movie Interface
 */
 #include "movie.h" 
 
-// These should be pure virtual, commenting out just in case I need them
-// bool Movie::operator<(const Movie& /*rhs*/) const {
-//    return false;
-// }
-
-// bool Movie::operator>(const Movie& /*rhs*/) const {
-//    return false;
-// }
-
-// bool Movie::operator==(const Movie& /*rhs*/) const {
-//    return false;
-// }
-
-// bool Movie::operator!=(const Movie& /*rhs*/) const {
-//    return false;
-// }
-
-// bool Movie::mergeWith(const std::shared_ptr<Movie>& /*other*/) {
-//    return false;
-// }
-
 void Movie::printMovie() {
    std::cout << title << ", " << stock << std::endl;
 }
 
-// Implement getter methods
 std::string Movie::getTitle() const {
    return title;
 }

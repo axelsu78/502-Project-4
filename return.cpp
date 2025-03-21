@@ -1,3 +1,8 @@
+/* Axel Sundstrom and Cameron Chen
+   CSS 502 - Assignment 4
+   Return class
+*/
+
 #include "return.h"
 #include "action.h"
 

@@ -1,4 +1,4 @@
-/* Axel Sundstrom, Cameron Chen, Kalina Gavrilova, Vidushi Singla
+/* Axel Sundstrom and Cameron Chen
    CSS 502 Assignment 4
    Customer Class
 */
@@ -17,8 +17,6 @@ using string = std::string;
    -- representation of a current customer in a userbase
    -- store history of all transaction objects in vector history 
 */
-
-// blah blah blah
 
 class Customer {
 
