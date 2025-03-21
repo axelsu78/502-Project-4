@@ -1,3 +1,16 @@
+
+
+/*
+to build file we used:
+
+g++ -std=c++17 -g main.cpp movie.cpp movieparams.cpp borrow.cpp return.cpp filereader.cpp 
+customer.cpp borrowfactory.cpp returnfactory.cpp inventorystorage.cpp comedymovie.cpp dramamovie.cpp 
+classicmovie.cpp comedyfactory.cpp dramafactory.cpp classicfactory.cpp -o main_test
+
+just want to make sure the program doesn't have issues running lol
+
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,20 +26,7 @@
 
 using namespace std;
 
-// file read customers
-   // add strings to customerCommands
 
-// add customers to customer hash table
-   // no need to factory, just use string to create movie
-
-// file read movies
-   
-
-// add movies to movieBST
-   // call the appropriate moviefactory to create a movie
-   // add that to the appropriate movieBST
-
-// file read commands
 
 void parseCommand(const string& cmd, InventoryStorage& inventory){
    stringstream ss(cmd);
