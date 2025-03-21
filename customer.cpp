@@ -3,6 +3,15 @@
 
 using namespace std;
 
+Customer::Customer(int customerID, string firstName, string lastName) {
+   this->customerID = customerID;
+   this->firstName = firstName;
+   this->lastName = lastName;
+}
+
+Customer::~Customer() {
+}
+
 void Customer::getHistory() const{
    
    if (history.size() == 0){
