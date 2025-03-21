@@ -4,8 +4,10 @@
 */
 #pragma once
 #include <memory>
+#include <vector>
 #include "movie.h"
 #include "action.h"
+#include "customer.h"
 
 /* Return class
    -- creates a return action to return a movie into store inventory

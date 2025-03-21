@@ -2,6 +2,19 @@
    CSS 502 Assignment 4
    Main - driver for Movie Rental System
 */
+
+
+/*
+to build file we used:
+
+g++ -std=c++17 -g main.cpp movie.cpp movieparams.cpp borrow.cpp return.cpp filereader.cpp 
+customer.cpp borrowfactory.cpp returnfactory.cpp inventorystorage.cpp comedymovie.cpp dramamovie.cpp 
+classicmovie.cpp comedyfactory.cpp dramafactory.cpp classicfactory.cpp -o main_test
+
+just want to make sure the program doesn't have issues running 
+
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -30,6 +43,7 @@ using namespace std;
    -- Processes the commands and performs the appropriate actions
 */
 
+
 /* parseCommand()
    -- Parses a command string and performs the appropriate action
    -- cmd: command string to parse
@@ -37,6 +51,7 @@ using namespace std;
    -- creates a search key for the movie and searches the appropriate BST
    -- performs the action on the movie if found
 */
+
 void parseCommand(const string& cmd, InventoryStorage& inventory){
    stringstream ss(cmd);
    char commandType;
