@@ -58,6 +58,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
 
    switch (movieType) {
       case 'F': {
+         {
          size_t commaPos = movieData.find(',');
          if (commaPos != string::npos) {
             string title = movieData.substr(0, commaPos);
@@ -101,9 +102,11 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
                }
             }
          }
+      }
          break;
       }
       case 'D': {
+         {
         size_t commaPos = movieData.find(',');
         if (commaPos != string::npos) {
             string director = movieData.substr(0, commaPos);
@@ -140,9 +143,11 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
                return;
             }
          }
+      }
          break;
       }
       case 'C': {
+         {
          // Classic format: Month Year Actor
          istringstream iss(movieData);
          int month, year;
@@ -198,6 +203,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
                      return;
              }
          }
+      }
          break;
      }
       default:
