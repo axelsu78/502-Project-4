@@ -31,10 +31,10 @@ using namespace std;
 void parseCommand(const string& cmd, InventoryStorage& inventory){
    stringstream ss(cmd);
    char commandType;
-   int customerID, amount;
+   int customerID;
    char mediaType, movieType;
 
-   ss >> commandType >> customerID >> mediaType >> movieType >> amount;
+   ss >> commandType >> customerID >> mediaType >> movieType;
 
    if (ss.fail()) {
       cout << "Error: Command format invalid - missing required parameters" << endl;
