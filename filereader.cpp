@@ -53,9 +53,9 @@ void FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
             getline(ss, leadActor, ',');
             getline(ss, releaseMonth, ',');
             getline(ss, releaseYear, ',');
-            int stockInt = stoi(stock);
-            int monthInt = stoi(releaseMonth);
-            int yearInt = stoi(releaseYear);
+            int stockInt = stock.empty() ? 0 : stoi(stock);
+            int monthInt = releaseMonth.empty() ? 0 : stoi(releaseMonth);
+            int yearInt = releaseYear.empty() ? 0 : stoi(releaseYear);
 
             std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
             MovieParams* params = new MovieParams(title, director, yearInt, stockInt, dvd);
@@ -70,8 +70,8 @@ void FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
             getline(ss, director, ',');
             getline(ss, title, ',');
             getline(ss, releaseYear, ',');
-            int stockInt = stoi(stock);
-            int yearInt = stoi(releaseYear);
+            int stockInt = stock.empty() ? 0 : stoi(stock);
+            int yearInt = releaseYear.empty() ? 0 : stoi(releaseYear);
 
             std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
 
@@ -87,8 +87,8 @@ void FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
             getline(ss, director, ',');
             getline(ss, title, ',');
             getline(ss, releaseYear, ',');
-            int stockInt = stoi(stock);
-            int yearInt = stoi(releaseYear);
+            int stockInt = stock.empty() ? 0 : stoi(stock);
+            int yearInt = releaseYear.empty() ? 0 : stoi(releaseYear);
 
             std::shared_ptr<MediaType> dvd = std::make_shared<DVD>();
 
