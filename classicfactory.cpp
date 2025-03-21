@@ -2,6 +2,11 @@
 #include "classicmovie.h"
 #include "movieparams.h"
 
+#include "comedyfactory.h"
+
+ClassicFactory::ClassicFactory() {
+}
+
 std::shared_ptr<Movie> ClassicFactory::createMovie(const MovieParams& params) {
     return std::make_shared<ClassicMovie>(
         params.title,
