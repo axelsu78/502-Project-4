@@ -18,6 +18,7 @@ using string = std::string;
    -- store history of all transaction objects in vector history 
 */
 
+// blah blah blah
 
 class Customer {
 
