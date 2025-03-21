@@ -1,6 +1,10 @@
 #include "comedyfactory.h"
 #include "comedymovie.h"
 
+
+ComedyFactory::ComedyFactory() {
+}
+
 std::shared_ptr<Movie> ComedyFactory::createMovie(const MovieParams& params){
    return std::make_shared<ComedyMovie>(
        params.title, 
