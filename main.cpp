@@ -314,7 +314,6 @@ int main(){
 
    for (const auto& cmd : inventory.actionCommands){
       processCommands(cmd, inventory);
-      cout << endl;
    }
 
    return 0;
