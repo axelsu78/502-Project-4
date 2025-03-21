@@ -45,6 +45,9 @@ public:
 
    void printName();
 
+   std::vector<std::shared_ptr<Action>> getHistoryVector();
+
+
 private:
 
    int customerID;

@@ -1,8 +1,10 @@
 //Borrow
 #pragma once
 #include <memory>
+#include <vector>
 #include "movie.h"
 #include "action.h"
+#include "customer.h"
 
 class Return : public Action {
 

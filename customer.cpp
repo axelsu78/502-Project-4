@@ -45,3 +45,7 @@ bool Customer::addHistory(std::shared_ptr<Action> action){
 void Customer::printName(){
    cout << firstName << " " << lastName;
 }
+
+std::vector<std::shared_ptr<Action>> Customer::getHistoryVector(){
+   return history;
+}
