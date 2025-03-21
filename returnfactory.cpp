@@ -2,6 +2,8 @@
 #include "return.h"
 #include "action.h"
 
+ReturnFactory::ReturnFactory(){}
+
 bool ReturnFactory::createAction(std::shared_ptr<Customer> customer, std::shared_ptr<Movie> movie){
    
    std::shared_ptr<Action> returnObject = std::make_shared<Return>(customer, movie);
