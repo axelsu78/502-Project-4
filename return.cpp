@@ -6,23 +6,9 @@
 #include "return.h"
 #include "action.h"
 
-// bool Return::execute(){
-   
-   
-
-//    movie->setStock(movie->getStock() + 1);
-//    return true;
-   
-// }
-
 bool Return::execute() {
-   std::cout << "DEBUG Return: Attempting to return movie: " << movie->getTitle() 
-             << " for customer: " << (customer ? "Valid" : "Invalid") 
-             << std::endl;
-
    // Check if customer exists
    if (!customer) {
-       std::cout << "DEBUG Return: Invalid customer" << std::endl;
        return false;
    }
 
@@ -34,9 +20,6 @@ bool Return::execute() {
 
    // Iterate through customer's history to find a matching borrow action
    for (const auto& action : customerHistory) {
-       std::cout << "DEBUG Return: Checking previous action - Type: " << action->getActionType() 
-                 << ", Movie: " << action->getMovie() 
-                 << std::endl;
 
        // Check if there's a matching borrow action for this movie
        if (action->getActionType() == "Borrow" && action->getMovie() == movie->getTitle()) {
@@ -47,11 +30,9 @@ bool Return::execute() {
 
    // Only return the movie if a matching borrow action exists
    if (hasBorrowAction) {
-       std::cout << "DEBUG Return: Matching borrow action found. Returning movie." << std::endl;
        movie->setStock(movie->getStock() + 1);
        return true;
    } else {
-       std::cout << "DEBUG Return: No matching borrow action found. Return failed." << std::endl;
        return false;
    }
 }

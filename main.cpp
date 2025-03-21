@@ -3,13 +3,13 @@
    Main - driver for Movie Rental System
 */
 
-
 /*
 to build file we used:
 
-g++ -std=c++17 -g main.cpp movie.cpp movieparams.cpp borrow.cpp return.cpp filereader.cpp 
-customer.cpp borrowfactory.cpp returnfactory.cpp inventorystorage.cpp comedymovie.cpp dramamovie.cpp 
-classicmovie.cpp comedyfactory.cpp dramafactory.cpp classicfactory.cpp -o main_test
+   g++ movie.cpp movieparams.cpp borrow.cpp return.cpp filereader.cpp customer.cpp 
+   borrowfactory.cpp returnfactory.cpp inventorystorage.cpp 
+   comedymovie.cpp dramamovie.cpp classicmovie.cpp comedyfactory.cpp dramafactory.cpp classicfactory.cpp 
+   main.cpp
 
 just want to make sure the program doesn't have issues running 
 
@@ -31,13 +31,6 @@ just want to make sure the program doesn't have issues running
 using namespace std;
 
 /* Main 
-   -- compiles with: 
-      
-      g++ movie.cpp movieparams.cpp borrow.cpp return.cpp filereader.cpp customer.cpp 
-      borrowfactory.cpp returnfactory.cpp inventorystorage.cpp 
-      comedymovie.cpp dramamovie.cpp classicmovie.cpp comedyfactory.cpp dramafactory.cpp classicfactory.cpp 
-      main.cpp
-
    -- Driver for the Movie Rental System
    -- Reads customer, movie, and command data from files
    -- Processes the commands and performs the appropriate actions
@@ -243,6 +236,7 @@ void parseCommand(const string& cmd, InventoryStorage& inventory){
    -- inventory: InventoryStorage object containing the data
    -- calls the appropriate function based on the command type
 */
+
 void processCommands(const string& cmd, InventoryStorage& inventory){
    if (cmd.empty()){
       return;
@@ -283,8 +277,6 @@ void processCommands(const string& cmd, InventoryStorage& inventory){
          cout << "Unknown command type: " << cmdType << endl;
          break;
    }
-
-
 }
 
 int main(){
