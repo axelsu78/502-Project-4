@@ -53,12 +53,6 @@ void FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
             getline(ss, stock, ',');
             getline(ss, director, ',');
             getline(ss, title, ',');
-            if (!title.empty()) {
-                size_t firstNonSpace = title.find_first_not_of(" \t");
-                if (firstNonSpace != string::npos) {
-                    title = title.substr(firstNonSpace);
-                }
-            }
             getline(ss, leadActor, ',');
             getline(ss, releaseMonth, ',');
             getline(ss, releaseYear, ',');
@@ -78,12 +72,6 @@ void FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
             getline(ss, stock, ',');
             getline(ss, director, ',');
             getline(ss, title, ',');
-            if (!title.empty()) {
-                size_t firstNonSpace = title.find_first_not_of(" \t");
-                if (firstNonSpace != string::npos) {
-                    title = title.substr(firstNonSpace);
-                }
-            }
             getline(ss, releaseYear, ',');
             int stockInt = stock.empty() ? 0 : stoi(stock);
             int yearInt = releaseYear.empty() ? 0 : stoi(releaseYear);
@@ -101,12 +89,7 @@ void FileReader::readMovies(ifstream &infile, InventoryStorage& inventory) {
             getline(ss, stock, ',');
             getline(ss, director, ',');
             getline(ss, title, ',');
-            if (!title.empty()) {
-                size_t firstNonSpace = title.find_first_not_of(" \t");
-                if (firstNonSpace != string::npos) {
-                    title = title.substr(firstNonSpace);
-                }
-            }
+            
             getline(ss, releaseYear, ',');
             int stockInt = stock.empty() ? 0 : stoi(stock);
             int yearInt = releaseYear.empty() ? 0 : stoi(releaseYear);
