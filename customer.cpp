@@ -22,8 +22,9 @@ void Customer::getHistory() const{
 
 bool Customer::addHistory(std::shared_ptr<Action> action){
    history.push_back(action);
+   return true;
 }
 
-string Customer::printName(){
+void Customer::printName(){
    cout << firstName << " " << lastName;
 }

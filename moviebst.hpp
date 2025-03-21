@@ -81,7 +81,7 @@ std::shared_ptr<Movie> MovieBST<Movie>::retrieveHelper(Node* root, std::shared_p
 }
 
 template <typename Movie>
-void MovieBST<Movie>::displayHelper(Node* root){
+void MovieBST<Movie>::displayHelper(Node* root) const{
    
    if (root == nullptr){
       return;

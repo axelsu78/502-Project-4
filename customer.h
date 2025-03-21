@@ -42,7 +42,7 @@ public:
     */
    bool addHistory(std::shared_ptr<Action> action);
 
-   string printName();
+   void printName();
 
 private:
 

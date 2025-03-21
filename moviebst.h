@@ -51,7 +51,7 @@ std::shared_ptr<Movie> retrieveHelper(Node* root, std::shared_ptr<Movie> tempSea
  * 
  * @param root current subtree node
  */
-void displayHelper(Node* root);
+void displayHelper(Node* root) const;
 
 /**
  * @brief deletes entire tree
