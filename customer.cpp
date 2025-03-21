@@ -14,7 +14,7 @@ Customer::~Customer() {
 
 void Customer::getHistory() const{
    
-   if (history.size() == 0){
+   if (history.empty()){
       cout << "History for Customer " << firstName << " " << lastName << " is empty" << endl;
    }
    
@@ -30,7 +30,15 @@ void Customer::getHistory() const{
 }
 
 bool Customer::addHistory(std::shared_ptr<Action> action){
+   std::cout << "DEBUG: Adding action to history. " 
+             << "Action type: " << action->getActionType() 
+             << ", Movie: " << action->getMovie() 
+             << ", History size before: " << history.size() 
+             << std::endl;
+   
    history.push_back(action);
+   
+   std::cout << "DEBUG: History size after: " << history.size() << std::endl;
    return true;
 }
 

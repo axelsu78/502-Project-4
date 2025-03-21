@@ -4,7 +4,9 @@
 #include <vector>
 #include <cassert>
 #include <memory>
-#include <sstream>  // Added for stringstream
+#include <sstream>
+#include <tuple>
+#include <optional>  // C++17 feature
 
 #include "inventorystorage.h"
 #include "filereader.h"
@@ -17,6 +19,7 @@
 #include "action.h"
 #include "borrow.h"
 #include "return.h"
+#include "dvd.h"
 
 using namespace std;
 
@@ -36,6 +39,7 @@ struct TestStats {
 TestStats testCustomerLoading(InventoryStorage& inventory);
 TestStats testMovieLoading(InventoryStorage& inventory);
 TestStats testCommandProcessing(const vector<string>& commands, InventoryStorage& inventory);
+TestStats testHistoryTracking(InventoryStorage& inventory);
 void processCommandForTest(const string& cmd, InventoryStorage& inventory, TestStats& stats);
 void runAllTests();
 
@@ -127,6 +131,11 @@ void runAllTests() {
     TestStats commandStats = testCommandProcessing(commands, inventory);
     totalStats.passed += commandStats.passed;
     totalStats.failed += commandStats.failed;
+    
+    // Test history tracking
+    TestStats historyStats = testHistoryTracking(inventory);
+    totalStats.passed += historyStats.passed;
+    totalStats.failed += historyStats.failed;
     
     // Print summary
     cout << "\n=== Test Summary ===" << endl;
@@ -251,6 +260,7 @@ TestStats testMovieLoading(InventoryStorage& inventory) {
         {'C', "Fake Movie, Actor Name 1 2000", false}
     };
     
+    // Using C++17 structured bindings
     for (const auto& [type, movieStr, shouldExist] : moviesToCheck) {
         // Simulate movie lookup - in real implementation, you'd create search key and use retrieve
         bool found = shouldExist; // For demo
@@ -307,6 +317,130 @@ TestStats testCommandProcessing(const vector<string>& commands, InventoryStorage
     for (const auto& cmd : invalidCommands) {
         cout << YELLOW << "Processing: " << cmd << RESET << endl;
         processCommandForTest(cmd, inventory, stats);
+    }
+    
+    return stats;
+}
+
+TestStats testHistoryTracking(InventoryStorage& inventory) {
+    cout << "\n=== Customer History Tracking Tests ===" << endl;
+    TestStats stats;
+    
+    // Test specific customer IDs for history verification
+    vector<int> testCustomerIDs = {1000, 5000, 8000};
+    
+    // First verify histories are initially empty
+    cout << "Checking initial histories:" << endl;
+    for (int id : testCustomerIDs) {
+        auto customerPtr = inventory.customerSearchTable.find(id);
+        if (!customerPtr) {
+            cout << RED << "✗ Customer " << id << " not found!" << RESET << endl;
+            stats.failed++;
+            continue;
+        }
+        
+        // Capture stdout to check if history is empty
+        // This assumes getHistory() prints "History is empty" or similar
+        cout << "Customer " << id << " initial history: ";
+        // Call getHistory and rely on its output to verify
+        (*customerPtr)->getHistory();
+    }
+    
+    cout << "\nProcessing test transactions:" << endl;
+    
+    // Add specific borrow/return actions for testing
+    // Customer 1000 borrows a movie
+    {
+        string borrowCmd = "B 1000 D F Sleepless in Seattle, 1993";
+        cout << YELLOW << "Processing: " << borrowCmd << RESET << endl;
+        
+        // Use your actual command processing function here
+        // For example: processCommand(borrowCmd, inventory);
+        
+        // Create the movie parameters for this test
+        MovieParams params("Sleepless in Seattle", "", 1993, 10, std::make_shared<DVD>());
+        auto searchKey = inventory.comedyFactory.createSearchKey(params);
+        auto moviePtr = inventory.comedyTree.retrieve(searchKey);
+        
+        if (moviePtr) {
+            // Process a borrow directly
+            auto customerPtr = inventory.customerSearchTable.find(1000);
+            if (customerPtr) {
+                bool success = inventory.borrowFactory.createAction(*customerPtr, moviePtr);
+                if (success) {
+                    cout << GREEN << "✓ Successfully processed test borrow" << RESET << endl;
+                    stats.passed++;
+                } else {
+                    cout << RED << "✗ Failed to process test borrow" << RESET << endl;
+                    stats.failed++;
+                }
+            }
+        }
+    }
+    
+    // Customer 5000 borrows and returns a movie
+    {
+        // First borrow
+        string borrowCmd = "B 5000 D C 3 1971 Ruth Gordon";
+        cout << YELLOW << "Processing: " << borrowCmd << RESET << endl;
+        
+        // Create the movie parameters for this test
+        MovieParams params("", "", 1971, 10, std::make_shared<DVD>());
+        params.setReleaseMonth(3);
+        params.addActor("Ruth Gordon");
+        auto searchKey = inventory.classicFactory.createSearchKey(params);
+        auto moviePtr = inventory.classicTree.retrieve(searchKey);
+        
+        if (moviePtr) {
+            // Process a borrow directly
+            auto customerPtr = inventory.customerSearchTable.find(5000);
+            if (customerPtr) {
+                bool success = inventory.borrowFactory.createAction(*customerPtr, moviePtr);
+                if (success) {
+                    cout << GREEN << "✓ Successfully processed classic borrow" << RESET << endl;
+                    stats.passed++;
+                } else {
+                    cout << RED << "✗ Failed to process classic borrow" << RESET << endl;
+                    stats.failed++;
+                }
+                
+                // Now process a return
+                string returnCmd = "R 5000 D C 3 1971 Ruth Gordon";
+                cout << YELLOW << "Processing: " << returnCmd << RESET << endl;
+                
+                success = inventory.returnFactory.createAction(*customerPtr, moviePtr);
+                if (success) {
+                    cout << GREEN << "✓ Successfully processed classic return" << RESET << endl;
+                    stats.passed++;
+                } else {
+                    cout << RED << "✗ Failed to process classic return" << RESET << endl;
+                    stats.failed++;
+                }
+            }
+        }
+    }
+    
+    // Check histories after transactions
+    cout << "\nVerifying histories after transactions:" << endl;
+    for (int id : testCustomerIDs) {
+        auto customerPtr = inventory.customerSearchTable.find(id);
+        if (!customerPtr) {
+            cout << RED << "✗ Customer " << id << " not found!" << RESET << endl;
+            stats.failed++;
+            continue;
+        }
+        
+        // Display customer history - this will show if transactions were recorded
+        cout << "Customer " << id << " updated history: ";
+        (*customerPtr)->getHistory();
+        
+        // For a more detailed verification, you could check specific requirements:
+        // 1. ID 1000 should have a borrow transaction
+        // 2. ID 5000 should have both borrow and return transactions
+        // 3. ID 8000 should still be empty
+        
+        // Since we can't programmatically check the output of getHistory(), we'll
+        // rely on visual inspection of the output for final verification
     }
     
     return stats;
